@@ -4,6 +4,7 @@ Ambiente: Windows, Node 22.14.0, Expo SDK 58, React 19.3 / React Native 0.88, Ty
 
 ## Completato
 
+- Icona dell’app e favicon allineate al simbolo ScanFace della home. PNG 1024 px e foreground adattivo rigenerati, con verifica dell’area sicura circolare Android e anteprima in `app-icon-preview.png`.
 - Registrazione rimossa completamente: componente, stato UI, pulizia video e dipendenze dirette dedicate eliminati; fotocamera, microfono e accesso alla galleria esclusi dalla configurazione Android.
 - Sensore: 3 secondi per posizionare il telefono prima della misura, angolo ricavato dai tre assi, soglie angolari e stabilità basate sul tempo. Corretto il fallback manuale che lasciava attivo il rilevatore e il recupero dopo un’interruzione dei campioni. Prova dell’inclinazione disponibile prima del turno, senza assegnare punti. Il browser presenta soltanto controlli manuali.
 - 17 test dedicati al sensore con stream e orologio simulati: landscape in entrambe le direzioni, rumore, ritorno neutro, 5/10/20/50 Hz, primo gesto dopo countdown, posizionamento dopo il tocco, posizione troppo piatta, perdita e ritorno del segnale, calibrazione e listener cancellati all’uscita. Totale: 60 test. Nessun telefono o emulatore collegato durante questa revisione.
@@ -13,7 +14,7 @@ Ambiente: Windows, Node 22.14.0, Expo SDK 58, React 19.3 / React Native 0.88, Ty
 - Firma “by Gleetch” sotto il marchio e selettore con bandiere vettoriali locali per tutte le lingue. Controllo visivo della testata a 320 e 390 px e della schermata lingua; screenshot `header-compact-it.png` e `languages-mobile-it.png`.
 - Ripristinati i metadati delle dipendenze nel lockfile dopo una sostituzione di versione troppo ampia. Versioni e URL confrontati con il lockfile dei pacchetti installati; `npm ci --dry-run --ignore-scripts --offline --no-audit --no-fund` riuscito.
 - Revisione grafica 1.0.0: identità Confetti: crema / menta / albicocca, con piccoli accenti lampone, nuovo marchio e icona, barra di navigazione flottante, categorie con superfici colorate discrete e selettori a capsula. Nuovo controllo visivo su mobile, desktop e turno landscape; 60 test, typecheck ed entrambi gli script browser superati. Dettagli in `DESIGN.md`.
-- APK 1.0.0: build riuscita, versionCode 12, firma v2 verificata e certificato identico alle build precedenti. Può essere installato come aggiornamento conservando i dati locali. La directory breve `C:\og-build-20261026` conserva la cache della build per le prossime iterazioni grafiche.
+- APK 1.0.0: build riuscita, versionCode 13, firma v2 verificata e certificato identico alle build precedenti. Può essere installato come aggiornamento conservando i dati locali. La directory breve `C:\og-build-20261026` conserva la cache della build per le prossime iterazioni grafiche.
 
 - `npm run typecheck`: riuscito.
 - `npm test`: 60 test riusciti, nessun fallimento. Copertura di punteggi, penalità, scadenza, pause, deduplicazione, review, mescolamento, recupero salvataggi, mazzi e integrità delle cinque lingue. La matrice di turnazione include 2/3/4 squadre × 1/3/5/7 round.

@@ -1,14 +1,25 @@
 import sharp from "sharp";
 import { mkdir, writeFile } from "node:fs/promises";
 await mkdir("assets/sounds", { recursive: true });
-const mark = `<g transform="rotate(-7 512 512)"><rect x="200" y="324" width="624" height="376" rx="96" fill="#286554"/><rect x="229" y="353" width="566" height="318" rx="68" fill="#FFB05A"/><path d="M350 444 Q384 415 418 444 M606 444 Q640 415 674 444" stroke="#422339" stroke-width="26" fill="none" stroke-linecap="round"/><path d="M418 537 Q512 628 606 537" stroke="#422339" stroke-width="27" fill="none" stroke-linecap="round"/><rect x="244" y="464" width="11" height="72" rx="5" fill="#422339"/></g><path d="M687 230 h91 v91 M772 236 l-88 88" stroke="#AF2F63" stroke-width="24" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="245" cy="748" r="17" fill="#9AD7C7"/>`;
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024"><rect width="1024" height="1024" rx="216" fill="#FFF9F0"/><circle cx="512" cy="512" r="419" stroke="#FFB05A" stroke-width="3" fill="none"/>${mark}</svg>`;
+// Exact Lucide ScanFace geometry, stroke and rotation used beside the name
+// in App.tsx. Keep the adaptive foreground inside Android's safe area.
+const paths = [
+  "M3 7V5a2 2 0 0 1 2-2h2",
+  "M17 3h2a2 2 0 0 1 2 2v2",
+  "M21 17v2a2 2 0 0 1-2 2h-2",
+  "M7 21H5a2 2 0 0 1-2-2v-2",
+  "M8 14s1.5 2 4 2 4-2 4-2",
+  "M9 9h.01",
+  "M15 9h.01",
+];
+const mark = `<g transform="rotate(-5 512 512) translate(208 208) scale(${608 / 24})" fill="none" stroke="#422339" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${paths.map((d) => `<path d="${d}"/>`).join("")}</g>`;
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024"><rect width="1024" height="1024" fill="#FFB05A"/>${mark}</svg>`;
 await writeFile("assets/icon.svg", svg);
 await sharp(Buffer.from(svg)).png().toFile("assets/icon.png");
 await sharp(Buffer.from(svg)).resize(64).png().toFile("assets/favicon.png");
 await sharp(
   Buffer.from(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024"><g transform="translate(110 110) scale(.785)">${mark}</g></svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024">${mark}</svg>`,
   ),
 )
   .png()
