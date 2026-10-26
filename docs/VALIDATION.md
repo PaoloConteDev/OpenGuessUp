@@ -41,7 +41,7 @@ Il web richiede rete/server per l'avvio a freddo: non c'è un service worker. L'
 
 ## Screenshot
 
-La galleria pubblica del README usa esclusivamente screenshot portrait, catturati dalla UI web reale con viewport 390 × 844 e densità 2 (PNG 780 × 1688). `node scripts/screenshots.mjs` acquisisce home, categorie, configurazione e risultati in `docs/screenshots/`, verificando errori JavaScript e overflow. Il turno resta landscape; le catture tecniche sottostanti documentano l’orientamento effettivo del gioco.
+La galleria pubblica contiene soltanto home e gioco, in due PNG portrait 780 × 1688. La home è catturata dalla UI web a 390 × 844 e densità 2. Il gioco è catturato realmente a 844 × 390 e inserito in una presentazione verticale con didascalia che ne esplicita l’orientamento landscape. `node scripts/screenshots.mjs` genera entrambi i file in `docs/screenshots/`, verificando errori JavaScript e overflow. Le catture tecniche sottostanti documentano le altre schermate e l’orientamento effettivo del gioco.
 
 | Schermata                         | File                                                    |
 | --------------------------------- | ------------------------------------------------------- |

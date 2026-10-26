@@ -1,8 +1,8 @@
 import { chromium } from "@playwright/test";
 import assert from "node:assert/strict";
-import { mkdir } from "node:fs/promises";
+import { mkdir, readFile } from "node:fs/promises";
 
-// Capture the public portrait gallery. Gameplay keeps its real landscape layout.
+// Public gallery: portrait home + a portrait presentation of real landscape play.
 const browser = await chromium.launch({
   headless: true,
   executablePath:
@@ -15,81 +15,88 @@ const page = await browser.newPage({
 });
 const errors = [];
 page.on("pageerror", (error) => errors.push(error.message));
-await page.addInitScript(() => {
-  localStorage.setItem("@open-guess/language-v1", "it");
-});
+await page.addInitScript(() =>
+  localStorage.setItem("@open-guess/language-v1", "it"),
+);
 const button = (name) =>
   page.getByRole("button", { name, exact: true }).first();
+const data = (bytes, mime) => `data:${mime};base64,${bytes.toString("base64")}`;
 await mkdir("docs/screenshots", { recursive: true });
-const capture = async (name) => {
-  assert.deepEqual(page.viewportSize(), { width: 390, height: 844 });
-  await page.evaluate(() => {
-    if (document.activeElement instanceof HTMLElement)
-      document.activeElement.blur();
-    for (const element of document.querySelectorAll("*")) {
-      if (element instanceof HTMLElement && element.scrollTop > 0)
-        element.scrollTop = 0;
-    }
-    window.scrollTo(0, 0);
-  });
-  await page.evaluate(() => document.fonts.ready);
-  await page.waitForTimeout(250);
-  await page.evaluate(() => {
-    for (const element of document.querySelectorAll("*")) {
-      if (element instanceof HTMLElement && element.scrollTop > 0)
-        element.scrollTop = 0;
-    }
-    window.scrollTo(0, 0);
-  });
-  assert.ok(
-    await page.evaluate(
-      () => document.documentElement.scrollWidth <= innerWidth,
-    ),
-    `${name}: horizontal overflow`,
-  );
-  await page.screenshot({ path: `docs/screenshots/${name}-portrait-it.png` });
-};
 try {
   await page.goto("http://127.0.0.1:4174");
   await page
     .getByTestId("home-illustration")
     .locator("img")
     .evaluate((img) => img.decode());
-  await capture("home");
-  await button("Categorie").click();
-  await page.getByRole("checkbox", { name: "Animali", exact: true }).waitFor();
-  await capture("categories");
-  await button("Gioca con questi mazzi").click();
-  await page
-    .getByText("La vostra partita. Il vostro delirio.", { exact: true })
-    .waitFor();
-  await capture("setup");
+  await page.evaluate(() => document.fonts.ready);
+  await page.screenshot({ path: "docs/screenshots/home-portrait-it.png" });
 
+  await button("Nuova partita").click();
   await button("Andiamo!").click();
   await page.setViewportSize({ width: 844, height: 390 });
   await button("Andiamo! · 60s").click();
   await page.getByTestId("current-word").waitFor();
-  for (const key of [
-    "ArrowDown",
-    "ArrowDown",
-    "ArrowUp",
-    "ArrowDown",
-    "ArrowDown",
-  ]) {
+  for (const key of ["ArrowDown", "ArrowUp", "ArrowDown"]) {
     await page.keyboard.press(key);
     await page.waitForTimeout(720);
   }
-  await button("Pausa").click();
-  await button("Concludi questo turno").click();
-  await button("Conferma turno").click();
-  await page
-    .getByText("Partita finita. Risate infinite.", { exact: true })
-    .waitFor();
-  await page.setViewportSize({ width: 390, height: 844 });
-  await capture("results");
+  assert.ok(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  );
+  const game = await page.screenshot();
   assert.deepEqual(errors, []);
+
+  const [font, regular, icon] = await Promise.all([
+    readFile(
+      "node_modules/@expo-google-fonts/outfit/900Black/Outfit_900Black.ttf",
+    ),
+    readFile(
+      "node_modules/@expo-google-fonts/outfit/400Regular/Outfit_400Regular.ttf",
+    ),
+    readFile("assets/icon.png"),
+  ]);
+  const presentation = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+    deviceScaleFactor: 2,
+  });
+  await presentation.setContent(`<!doctype html><html lang="it"><head><style>
+    @font-face{font-family:Outfit;src:url('${data(regular, "font/ttf")}')}
+    @font-face{font-family:Outfit;src:url('${data(font, "font/ttf")}');font-weight:900}
+    *{box-sizing:border-box}body{margin:0;width:390px;height:844px;background:#F7FAFF;color:#26344A;font-family:Outfit;display:flex;flex-direction:column;align-items:center;padding:40px 16px}
+    .brand{display:flex;align-items:center;gap:10px;align-self:flex-start;margin-left:10px}.brand img{width:44px;height:44px;border-radius:13px}.brand strong{font-size:23px;font-weight:900}.brand small{display:block;font-size:11px;color:#5D6979}
+    .eyebrow{font-size:10px;letter-spacing:1.8px;color:#285E9B;margin:53px 0 14px}
+    h1{font-size:44px;line-height:1.04;letter-spacing:-1.4px;font-weight:900;text-align:center;margin:0 0 40px}
+    .phone{width:100%;padding:7px;background:#26344A;border-radius:23px;box-shadow:0 16px 35px #26344A24}.phone img{display:block;width:100%;height:auto;border-radius:16px}
+    .caption{font-size:11px;color:#5D6979;margin:16px 0 35px}
+    .controls{display:flex;gap:12px;width:100%;padding:0 10px}.control{flex:1;padding:17px 8px;border-radius:19px;text-align:center;font-size:14px}.control b{font-size:25px;font-weight:900;display:block;margin-bottom:5px}.green{background:#A9D7AF}.red{background:#F39A93}
+    .note{font-size:15px;line-height:23px;text-align:center;color:#5D6979;margin:30px 0 0}
+  </style></head><body>
+    <div class="brand"><img alt="" src="${data(icon, "image/png")}"><div><strong>Open GuessUp</strong><small>by Gleetch</small></div></div>
+    <div class="eyebrow">IL TURNO, VISTO DAGLI AMICI</div>
+    <h1>Quanto riesci<br>a indovinare?</h1>
+    <div class="phone"><img alt="Schermata reale del turno" src="${data(game, "image/png")}"></div>
+    <div class="caption">Schermata del turno in orizzontale</div>
+    <div class="controls"><div class="control green"><b>↓ +1</b>Indovinata</div><div class="control red"><b>↑</b>Passa</div></div>
+    <p class="note">Telefono in orizzontale.<br>Schermo verso gli amici.</p>
+  </body></html>`);
+  await presentation.evaluate(async () => {
+    await document.fonts.ready;
+    await Promise.all([...document.images].map((image) => image.decode()));
+  });
+  assert.ok(
+    await presentation.evaluate(
+      () =>
+        document.documentElement.scrollWidth <= innerWidth &&
+        document.documentElement.scrollHeight <= innerHeight,
+    ),
+  );
+  await presentation.screenshot({
+    path: "docs/screenshots/game-portrait-it.png",
+  });
   console.log(
-    "Four real portrait screenshots saved at 780×1688 px; no overflow or JavaScript errors.",
+    "Home + real landscape game presented in portrait: two 780×1688 images.",
   );
 } finally {
   await browser.close();

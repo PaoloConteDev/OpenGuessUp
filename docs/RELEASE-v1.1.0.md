@@ -24,12 +24,10 @@ Gli allegati comprendono anche `OpenGuessUp-1.1.0-source.zip` e `SHA256SUMS.txt`
 
 <p>
   <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/main/docs/screenshots/home-portrait-it.png" width="200" alt="Home portrait" />
-  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/main/docs/screenshots/categories-portrait-it.png" width="200" alt="Categorie portrait" />
-  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/main/docs/screenshots/setup-portrait-it.png" width="200" alt="Configurazione portrait" />
-  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/main/docs/screenshots/results-portrait-it.png" width="200" alt="Risultati portrait" />
+  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/main/docs/screenshots/game-portrait-it.png" width="200" alt="Anteprima portrait della schermata reale di gioco in landscape" />
 </p>
 
-Home, categorie, configurazione e risultati in formato verticale. Durante il turno il telefono si usa in orizzontale.
+Home e schermata reale di gioco, presentate in formato portrait. Il turno si gioca in landscape, come mostrato nella seconda anteprima.
 
 ## Verifiche e limiti
 

@@ -14,12 +14,10 @@
 
 <p align="center">
   <img src="docs/screenshots/home-portrait-it.png" width="200" alt="Home in formato portrait" />
-  <img src="docs/screenshots/categories-portrait-it.png" width="200" alt="Categorie in formato portrait" />
-  <img src="docs/screenshots/setup-portrait-it.png" width="200" alt="Configurazione in formato portrait" />
-  <img src="docs/screenshots/results-portrait-it.png" width="200" alt="Risultati in formato portrait" />
+  <img src="docs/screenshots/game-portrait-it.png" width="200" alt="Anteprima portrait della schermata reale di gioco in landscape" />
 </p>
 
-Schermate portrait di home, categorie, configurazione e risultati. Il turno di gioco usa l’orientamento landscape.
+Home e schermata reale di gioco, presentate in formato portrait. Il turno si gioca in landscape, come mostrato nella seconda anteprima.
 
 ## Installare e aggiornare
 
@@ -172,7 +170,7 @@ node scripts/smoke.mjs
 
 I test del motore verificano punteggi, penalità, turni uguali per 2–4 squadre e 1/3/5/7 round, pareggio, scadenza, pausa/ripresa, mescolamento e pool minimi, input simultanei, correzioni, ripristino, mazzi e dati localizzati. La prova browser percorre anche salvataggio/ricaricamento, cinque lingue, creazione multipla, tastiera e scadenza reale del timer. Screenshot in `docs/`; risultati e limiti in `docs/VALIDATION.md`.
 
-La galleria portrait del README è in `docs/screenshots/`: quattro catture reali dell’anteprima web, viewport 390 × 844 e immagini 780 × 1688 px. Per rigenerarle con l’anteprima già avviata: `node scripts/screenshots.mjs`. Le catture landscape in `docs/` restano disponibili per la verifica del turno.
+La galleria del README è in `docs/screenshots/`: due immagini portrait da 780 × 1688 px. La home è una cattura diretta dell’anteprima web; il gioco è una cattura reale del turno landscape inserita in una presentazione verticale con didascalia. Per rigenerarle con l’anteprima già avviata: `node scripts/screenshots.mjs`. Le catture landscape in `docs/` restano disponibili per la verifica del turno.
 
 ## Struttura
 
