@@ -51,6 +51,7 @@ import {
 } from "../components/UI";
 import { HeroArt } from "../components/HeroArt";
 import { C, FONT, accentInk } from "../theme";
+import { APP_VERSION } from "../version";
 import { LANGUAGES, useI18n } from "../i18n/context";
 import { categories } from "../data/catalog";
 import { CustomDeck, parseWords, validDeck } from "../data/custom";
@@ -261,7 +262,12 @@ export function Home({
         <View style={{ flexDirection: mobile ? "column" : "row", gap: 16 }}>
           {[
             [Zap, "Rapida", "Un turno, tutti contro il timer.", C.yellow],
-            [Users, "A squadre", "2–4 squadre. Una fronte alla volta.", C.green],
+            [
+              Users,
+              "A squadre",
+              "2–4 squadre. Una fronte alla volta.",
+              C.green,
+            ],
           ].map(([I, title, sub, color], i) => {
             const Icon = I as typeof Users;
             return (
@@ -338,7 +344,7 @@ export function Home({
           paddingBottom: 12,
         }}
       >
-        {t("Versione 1.0.0 · Fatto per stare insieme.")}
+        {t("Versione {{0}} · Fatto per stare insieme.", APP_VERSION)}
       </Txt>
     </View>
   );

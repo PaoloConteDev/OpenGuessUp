@@ -3,14 +3,14 @@
     "name": "Open GuessUp",
     "slug": "open-guess",
     "scheme": "openguess",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "default",
     "userInterfaceStyle": "light",
     "backgroundColor": "#F7FAFF",
     "icon": "./assets/icon.png",
     "android": {
       "package": "it.gleetch.openguess",
-      "versionCode": 17,
+      "versionCode": 18,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#F4D875"

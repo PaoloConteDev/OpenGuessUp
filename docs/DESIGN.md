@@ -1,4 +1,4 @@
-# Identità Open GuessUp — Confetti 1.0.0
+# Identità Open GuessUp — Confetti 1.1.0
 
 Rosso, verde, blu e giallo pastello su una base bianco freddo. Il testo blu scuro sostituisce il prugna; le superfici colorate sostituiscono crema, pesca e rosa. La pelle dell’illustrazione mantiene una tonalità naturale.
 

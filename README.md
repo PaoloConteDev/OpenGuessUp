@@ -1,9 +1,32 @@
 # Open GuessUp
 
+**Versione 1.1.0 · by Gleetch**
+
 **Tu non vedi. Loro ridono.** Un party game offline per Android e web, con un solo telefono, realizzato con Expo SDK 58, React Native e TypeScript. Progetto indipendente di Gleetch. Identità Confetti: rosso, verde, blu e giallo pastello su bianco freddo, con Outfit, logo e icona originali. [Note di design](docs/DESIGN.md).
+
+[**Scarica l’APK Android 1.1.0**](https://github.com/PaoloConteDev/OpenGuessUp/releases/download/v1.1.0/OpenGuessUp-1.1.0-arm64.apk) · [Release e sorgenti](https://github.com/PaoloConteDev/OpenGuessUp/releases/tag/v1.1.0)
+
+- Una partita rapida oppure 2–4 squadre, con nomi e durata personalizzabili.
+- 12 categorie, 3.600 voci per lingua e mazzi personali modificabili.
+- Italiano, inglese, spagnolo, francese e tedesco.
+- Inclinazione su Android; pulsanti e tastiera per giocare anche sul web.
+- Nessun account, pubblicità, acquisto, tracking o backend necessario.
 
 ![Home](docs/home-desktop-it.png)
 ![Turno landscape](docs/turn-landscape-it.png)
+
+## Installare e aggiornare
+
+Scarica l’APK su un telefono Android **ARM64 con Android 7 o successivo**, aprilo e consenti l’installazione dalla fonte scelta. L’app funziona senza Expo Go; dati, font, illustrazione e suoni sono inclusi per giocare offline dal primo avvio.
+
+Se hai già installato la 1.0.0 di questa repository, apri il nuovo APK per aggiornarla conservando impostazioni, mazzi e partita salvata. La 1.1.0 mantiene package e certificato di firma; non serve disinstallare. Il file resta una build autonoma firmata con chiave debug, destinata a test e installazione diretta. I digest SHA-256 sono disponibili in `SHA256SUMS.txt` negli allegati della release.
+
+## Novità della 1.1.0
+
+- Identità Confetti a quattro colori pastello e illustrazione 3D originale nella home.
+- Icona Android coordinata al simbolo della home, bandiere delle lingue e firma “by Gleetch”.
+- Numero di versione aggiornato in tutta l’interfaccia, letto dalla configurazione dell’app.
+- README con download, regole, configurazione e istruzioni di compilazione.
 
 ## Avvio
 
@@ -29,7 +52,7 @@ Apri [127.0.0.1:4174](http://127.0.0.1:4174). [Anteprima telefono](http://127.0.
 
 1. Scegli e mescola categorie incluse e mazzi personali, oppure usa la categoria iniziale Animali.
 2. Configura una partita rapida (un turno) oppure 2–4 squadre. Ogni squadra gioca un turno per ciascun round.
-3. Tieni il telefono **in orizzontale sulla fronte**, schermo verso gli amici. Calibra tenendolo verticale e fermo per un secondo, poi avvia il countdown. La parola appare solo dopo il via.
+3. Tieni il telefono **in orizzontale sulla fronte**, schermo verso gli amici. Premi Calibra: hai 3 secondi per posizionarlo, poi resta fermo per circa un secondo. Avvia il countdown; la parola appare solo dopo il via.
 4. Gli amici seguono il tipo di indizio: descrivere senza dire la risposta; mimare senza parlare; cantare/fredonnare senza nominare l'artista o il titolo; imitare senza fare il nome. Per le scene bisogna indovinare l'intera situazione, non soltanto il personaggio.
 5. Inclina **in basso** per indovinata (+1), **in alto** per passare. Torna alla posizione verticale dopo ogni gesto. Sono sempre disponibili anche i pulsanti.
 6. Alla fine rivedete e correggete gli esiti, quindi confermate. Una parola senza risposta vale zero. Vince il punteggio più alto; tutti i primi a pari merito vincono.
@@ -67,7 +90,7 @@ Il timer usa una scadenza temporale, non il conteggio degli intervalli. Il backg
 | Emozioni in scena     | Imitazione                   |             300 |
 | Viaggi e disavventure | Indizi liberi                |             300 |
 
-Italiano, inglese, spagnolo, tedesco e francese includono interfaccia, regole, metadati e voci. Prima lingua dal dispositivo, fallback inglese; il selettore IT/EN/ES/DE/FR salva la preferenza. Un cambio lingua non traduce la partita in corso: la sua copia delle parole resta nella lingua di creazione.
+Italiano, inglese, spagnolo, tedesco e francese includono interfaccia, regole, metadati e voci. Prima lingua dal dispositivo, fallback inglese; il selettore con bandiere salva la preferenza. Un cambio lingua non traduce la partita in corso: la sua copia delle parole resta nella lingua di creazione.
 
 I pacchetti contengono sia parole sia espressioni e scene complete. Animali, cibo e altri repertori condividono parte del lessico originale del progetto dell'utente Open Taboo; sono state aggiunte specie, piatti, artisti e scene originali per Open GuessUp. I pacchetti di scene combinano protagonisti, azioni e vincoli: ad esempio «Un vampiro va dal dentista» è una situazione da recitare. Non sono presenti liste di parole vietate o dati estratti da GuessUp. La localizzazione è inclusa e controllata automaticamente per integrità e duplicati; resta consigliabile una revisione editoriale da madrelingua per terminologia specialistica e naturalezza di alcune scene.
 
@@ -95,11 +118,11 @@ Riferimenti tecnici: [coordinate dei sensori Android](https://developer.android.
 
 ## APK Android
 
-Scarica l'APK per telefoni ARM64 dalla [release v1.0.0](https://github.com/PaoloConteDev/OpenGuessUp/releases/tag/v1.0.0) (circa 27 MB). Nelle build locali il file è `artifacts/OpenGuessUp-1.0.0-arm64.apk`. Copialo sul telefono, aprilo e consenti l'installazione dalla fonte scelta. È un APK autonomo di test, firmato con la chiave debug Expo; non richiede Expo Go. Firma e metadati sono controllati, ma non è stato installato su un dispositivo fisico durante questa sessione.
+L’APK ARM64 della [release v1.1.0](https://github.com/PaoloConteDev/OpenGuessUp/releases/tag/v1.1.0) pesa circa 30 MB. Il file locale è `artifacts/OpenGuessUp-1.1.0-arm64.apk`; i sorgenti completi sono nell’allegato `OpenGuessUp-1.1.0-source.zip`. Firma e metadati sono controllati, ma non è stato installato su un dispositivo fisico durante questa sessione.
 
-Identità autonoma: **Open GuessUp**, slug `open-guess`, schema `openguess`, package `it.gleetch.openguess`, versione 1.0.0. Nessun ID EAS, proprietario o segreto di Open Taboo. Android minimo API 24. Icone e suoni propri inclusi.
+Identità autonoma: **Open GuessUp**, slug `open-guess`, schema `openguess`, package `it.gleetch.openguess`, versione 1.1.0. Nessun ID EAS, proprietario o segreto di Open Taboo. Android minimo API 24. Icone e suoni propri inclusi.
 
-Durante queste revisioni la versione pubblica resta **1.0.0**, come richiesto. Le build Android mantengono un `versionCode` interno crescente per poter aggiornare le copie già installate; questo numero non cambia la versione mostrata agli utenti.
+La versione pubblica **1.1.0** corrisponde al `versionCode` Android **18**. La versione mostrata in home e impostazioni proviene da `app.json`, attraverso `src/version.ts`. Il `versionCode` cresce separatamente per consentire gli aggiornamenti Android.
 
 La [repository GitHub](https://github.com/PaoloConteDev/OpenGuessUp) è raggiungibile anche dalle impostazioni dell'app. Sorgenti, dati, font e suoni sono inclusi nel progetto; APK e archivi di consegna vengono distribuiti negli allegati della release.
 
@@ -146,6 +169,7 @@ I test del motore verificano punteggi, penalità, turni uguali per 2–4 squadre
 ## Struttura
 
 - `App.tsx`: navigazione, ciclo di vita, scadenza e persistenza.
+- `src/version.ts`: versione pubblica letta dalla configurazione Expo.
 - `src/game/engine.ts`: motore puro, nessuna dipendenza UI, storage o sensore.
 - `src/game/tilt.ts`: filtro e isteresi puri.
 - `src/hooks/useTilt.ts`: acquisizione Expo e calibrazione.
@@ -156,3 +180,5 @@ I test del motore verificano punteggi, penalità, turni uguali per 2–4 squadre
 - `scripts/assets.mjs`: rigenera icona e suoni sintetizzati originali.
 
 Font Outfit e icone Lucide conservano le rispettive licenze; vedere `THIRD_PARTY_NOTICES.md`. Open GuessUp non è affiliato a Cosmicode o GuessUp. Riferimenti di meccanica consultati: [sito ufficiale](https://cosmicode.games/en/guess-up) e [scheda Google Play](https://play.google.com/store/apps/details?id=pt.cosmicode.guessup&hl=it). Nessuna immagine, logo, traccia audio o banca dati di GuessUp è inclusa.
+
+Codice distribuito con [licenza MIT](LICENSE). [Asset e prompt dell’illustrazione](docs/HERO_ART.md).

@@ -47,6 +47,7 @@ import {
   Txt,
 } from "./src/components/UI";
 import { C, FONT } from "./src/theme";
+import { APP_VERSION } from "./src/version";
 import { LanguageFlag } from "./src/components/LanguageFlag";
 import { Decks, Home, Rules, Setup, Toggle } from "./src/screens/Menu";
 import { Match } from "./src/screens/Match";
@@ -582,7 +583,10 @@ function Main() {
                         lineHeight: 24,
                       }}
                     >
-                      {t("Versione 1.0.0 · Fatto per stare insieme.")}
+                      {t(
+                        "Versione {{0}} · Fatto per stare insieme.",
+                        APP_VERSION,
+                      )}
                       {"\n"}Open GuessUp · Gleetch{"\n"}
                       {t("Zero pubblicità")} · 100% offline
                     </Txt>
