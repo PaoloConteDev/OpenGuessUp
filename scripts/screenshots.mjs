@@ -29,39 +29,65 @@ try {
     .locator("img")
     .evaluate((img) => img.decode());
   await page.evaluate(() => document.fonts.ready);
-  await page.screenshot({ path: "docs/screenshots/home-portrait-it.png" });
-
-  await button("Nuova partita").click();
-  await button("Andiamo!").click();
-  await page.setViewportSize({ width: 844, height: 390 });
-  await button("Andiamo! · 60s").click();
-  await page.getByTestId("current-word").waitFor();
-  for (const key of ["ArrowDown", "ArrowUp", "ArrowDown"]) {
-    await page.keyboard.press(key);
-    await page.waitForTimeout(720);
-  }
-  assert.ok(
-    await page.evaluate(
-      () => document.documentElement.scrollWidth <= innerWidth,
-    ),
+  // Font/image decoding may finish before React Native's JS fade-in. Wait
+  // for the actual ancestor opacity, then let the final frame reach the screen.
+  await page.waitForFunction(() => {
+    const illustration = document.querySelector(
+      '[data-testid="home-illustration"]',
+    );
+    if (!illustration) return false;
+    for (
+      let node = illustration;
+      node instanceof HTMLElement;
+      node = node.parentElement
+    ) {
+      if (Number(getComputedStyle(node).opacity) < 1) return false;
+    }
+    return true;
+  });
+  await page.evaluate(
+    () =>
+      new Promise((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(resolve)),
+      ),
   );
-  const game = await page.screenshot();
+  await page.screenshot({ path: "docs/screenshots/home-portrait-it.png" });
   assert.deepEqual(errors, []);
 
-  const [font, regular, icon] = await Promise.all([
-    readFile(
-      "node_modules/@expo-google-fonts/outfit/900Black/Outfit_900Black.ttf",
-    ),
-    readFile(
-      "node_modules/@expo-google-fonts/outfit/400Regular/Outfit_400Regular.ttf",
-    ),
-    readFile("assets/icon.png"),
-  ]);
-  const presentation = await browser.newPage({
-    viewport: { width: 390, height: 844 },
-    deviceScaleFactor: 2,
-  });
-  await presentation.setContent(`<!doctype html><html lang="it"><head><style>
+  if (process.argv.includes("--home-only")) {
+    console.log("Home captured at full opacity after the entrance animation.");
+  } else {
+    await button("Nuova partita").click();
+    await button("Andiamo!").click();
+    await page.setViewportSize({ width: 844, height: 390 });
+    await button("Andiamo! · 60s").click();
+    await page.getByTestId("current-word").waitFor();
+    for (const key of ["ArrowDown", "ArrowUp", "ArrowDown"]) {
+      await page.keyboard.press(key);
+      await page.waitForTimeout(720);
+    }
+    assert.ok(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    );
+    const game = await page.screenshot();
+    assert.deepEqual(errors, []);
+
+    const [font, regular, icon] = await Promise.all([
+      readFile(
+        "node_modules/@expo-google-fonts/outfit/900Black/Outfit_900Black.ttf",
+      ),
+      readFile(
+        "node_modules/@expo-google-fonts/outfit/400Regular/Outfit_400Regular.ttf",
+      ),
+      readFile("assets/icon.png"),
+    ]);
+    const presentation = await browser.newPage({
+      viewport: { width: 390, height: 844 },
+      deviceScaleFactor: 2,
+    });
+    await presentation.setContent(`<!doctype html><html lang="it"><head><style>
     @font-face{font-family:Outfit;src:url('${data(regular, "font/ttf")}')}
     @font-face{font-family:Outfit;src:url('${data(font, "font/ttf")}');font-weight:900}
     *{box-sizing:border-box}body{margin:0;width:390px;height:844px;background:#F7FAFF;color:#26344A;font-family:Outfit;display:flex;flex-direction:column;align-items:center;padding:40px 16px}
@@ -81,23 +107,24 @@ try {
     <div class="controls"><div class="control green"><b>↓ +1</b>Indovinata</div><div class="control red"><b>↑</b>Passa</div></div>
     <p class="note">Telefono in orizzontale.<br>Schermo verso gli amici.</p>
   </body></html>`);
-  await presentation.evaluate(async () => {
-    await document.fonts.ready;
-    await Promise.all([...document.images].map((image) => image.decode()));
-  });
-  assert.ok(
-    await presentation.evaluate(
-      () =>
-        document.documentElement.scrollWidth <= innerWidth &&
-        document.documentElement.scrollHeight <= innerHeight,
-    ),
-  );
-  await presentation.screenshot({
-    path: "docs/screenshots/game-portrait-it.png",
-  });
-  console.log(
-    "Home + real landscape game presented in portrait: two 780×1688 images.",
-  );
+    await presentation.evaluate(async () => {
+      await document.fonts.ready;
+      await Promise.all([...document.images].map((image) => image.decode()));
+    });
+    assert.ok(
+      await presentation.evaluate(
+        () =>
+          document.documentElement.scrollWidth <= innerWidth &&
+          document.documentElement.scrollHeight <= innerHeight,
+      ),
+    );
+    await presentation.screenshot({
+      path: "docs/screenshots/game-portrait-it.png",
+    });
+    console.log(
+      "Home + real landscape game presented in portrait: two 780×1688 images.",
+    );
+  }
 } finally {
   await browser.close();
 }

@@ -13,7 +13,7 @@
 - No account, ads, purchases, tracking or backend required.
 
 <p align="center">
-  <img src="docs/screenshots/home-portrait-it.png" width="200" alt="Home screen in portrait orientation" />
+  <img src="docs/screenshots/home-portrait-it.png?v=2" width="200" alt="Home screen in portrait orientation" />
   <img src="docs/screenshots/game-portrait-it.png" width="200" alt="Portrait presentation of an actual landscape gameplay screen" />
 </p>
 
