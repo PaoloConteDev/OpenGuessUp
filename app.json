@@ -1,0 +1,65 @@
+{
+  "expo": {
+    "name": "Open GuessUp",
+    "slug": "open-guess",
+    "scheme": "openguess",
+    "version": "1.0.0",
+    "orientation": "default",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#FFF9F0",
+    "icon": "./assets/icon.png",
+    "android": {
+      "package": "it.gleetch.openguess",
+      "versionCode": 11,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFF9F0"
+      },
+      "blockedPermissions": [
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
+      ]
+    },
+    "ios": {
+      "bundleIdentifier": "it.gleetch.openguess",
+      "supportsTablet": true
+    },
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/favicon.png",
+      "name": "Open GuessUp"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-asset",
+      "expo-screen-orientation",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": false,
+          "recordAudioAndroid": false,
+          "enableBackgroundPlayback": false
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Registra gli amici solo quando lo scegli.",
+          "microphonePermission": "Aggiungi l’audio al tuo video del turno.",
+          "recordAudioAndroid": true
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Scegli di salvare i video del gioco.",
+          "savePhotosPermission": "Salva i tuoi video nella galleria.",
+          "granularPermissions": [
+            "video"
+          ]
+        }
+      ],
+      "./scripts/withShortPaths.cjs"
+    ]
+  }
+}

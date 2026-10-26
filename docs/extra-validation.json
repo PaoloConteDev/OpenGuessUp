@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "errors": [],
+  "checks": [
+    "corrupt save",
+    "empty custom deck",
+    "edit/delete custom deck",
+    "immutable saved content",
+    "long expression fit",
+    "blur pause",
+    "desktop categories and setup"
+  ]
+}

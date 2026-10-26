@@ -1,0 +1,1 @@
+{"extends":"expo/tsconfig.base","compilerOptions":{"strict":true,"resolveJsonModule":true,"noUncheckedIndexedAccess":true,"types":["react","node"]},"include":["**/*.ts","**/*.tsx"],"exclude":["node_modules","dist","dist-android"]}

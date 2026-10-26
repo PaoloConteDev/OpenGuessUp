@@ -1,0 +1,10 @@
+# Crediti e licenze
+
+- Open GuessUp: codice e illustrazione originale per il progetto dell'utente; stile e parte del lessico originale derivano dal suo Open Taboo (Gleetch, MIT).
+- Outfit: font locale dal pacchetto `@expo-google-fonts/outfit`, SIL Open Font License 1.1 (licenza inclusa nel pacchetto).
+- Lucide: icone `lucide-react-native`, ISC.
+- Expo e React Native: MIT; React: MIT.
+- I file WAV di Open GuessUp sono sintetizzati da `scripts/assets.mjs` senza registrazioni o campioni esterni.
+- Nomi di artisti, luoghi, discipline e piatti sono riferimenti testuali da indovinare; marchi e nomi appartengono ai rispettivi titolari.
+
+Nessun asset o database estratto da GuessUp. Le licenze complete delle dipendenze sono distribuite nei rispettivi pacchetti npm e nel lockfile sono registrate le versioni utilizzate.
