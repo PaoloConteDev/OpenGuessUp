@@ -13,11 +13,11 @@
 - No account, ads, purchases, tracking or backend required.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/d39f1215a62bfb4fbd4398484d789ac63f1c42c3/docs/screenshots/home-portrait-it.png" width="200" alt="Home screen in portrait orientation" />
-  <img src="docs/screenshots/game-portrait-it.png" width="200" alt="Portrait presentation of an actual landscape gameplay screen" />
+  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/ddddb186ec6463cef0167ad8c3675bd6f601fb60/docs/screenshots/home-portrait-en.png" width="200" alt="English home screen in portrait orientation" />
+  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/ddddb186ec6463cef0167ad8c3675bd6f601fb60/docs/screenshots/game-portrait-en.png" width="200" alt="English gameplay screen in a portrait presentation" />
 </p>
 
-The home screen and actual gameplay, presented in portrait format. Turns are played in landscape, as shown in the second preview. The screenshots show the Italian interface.
+The home screen and actual gameplay, presented in portrait format. Turns are played in landscape, as shown in the second preview. Both screenshots use the English interface.
 
 ## Install and update
 
@@ -176,7 +176,7 @@ node scripts/smoke.mjs
 
 Engine tests cover scoring, penalties, equal turns for 2–4 teams and 1/3/5/7 rounds, ties, expiry, pause/resume, shuffling and minimal pools, simultaneous inputs, outcome corrections, recovery, decks and localized data. Browser checks also cover save/reload, all five languages, bulk entry, keyboard controls and actual timer expiry. Screenshots are in `docs/`; results and limitations are documented in `docs/VALIDATION.md`.
 
-The README gallery is in `docs/screenshots/`: two portrait images at 780 × 1688 px. The home is captured directly from the web preview. The gameplay image contains a real landscape turn inside a vertical presentation with a caption. With the preview server running, regenerate them using `node scripts/screenshots.mjs`. Landscape captures in `docs/` remain available for gameplay verification.
+The README gallery is in `docs/screenshots/`: two English portrait images at 860 × 1864 px. The home is captured directly from the web preview, after its entrance animation reaches full opacity. The gameplay image contains a real landscape turn inside a vertical presentation with English captions. With the preview server running, regenerate them using `node scripts/screenshots.mjs`. Landscape captures in `docs/` remain available for gameplay verification.
 
 ## Project structure
 

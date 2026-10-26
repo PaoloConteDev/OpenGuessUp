@@ -23,11 +23,11 @@ Gli allegati comprendono anche `OpenGuessUp-1.1.0-source.zip` e `SHA256SUMS.txt`
 ## Screenshot
 
 <p>
-  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/d39f1215a62bfb4fbd4398484d789ac63f1c42c3/docs/screenshots/home-portrait-it.png" width="200" alt="Home portrait" />
-  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/main/docs/screenshots/game-portrait-it.png" width="200" alt="Anteprima portrait della schermata reale di gioco in landscape" />
+  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/ddddb186ec6463cef0167ad8c3675bd6f601fb60/docs/screenshots/home-portrait-en.png" width="200" alt="English home screen in portrait orientation" />
+  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/ddddb186ec6463cef0167ad8c3675bd6f601fb60/docs/screenshots/game-portrait-en.png" width="200" alt="English gameplay screen in a portrait presentation" />
 </p>
 
-Home e schermata reale di gioco, presentate in formato portrait. Il turno si gioca in landscape, come mostrato nella seconda anteprima.
+English home and gameplay screens, presented in portrait format. Turns are played in landscape, as shown in the second preview.
 
 ## Verifiche e limiti
 
