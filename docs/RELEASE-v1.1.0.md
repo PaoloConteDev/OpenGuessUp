@@ -23,7 +23,7 @@ Gli allegati comprendono anche `OpenGuessUp-1.1.0-source.zip` e `SHA256SUMS.txt`
 ## Screenshot
 
 <p>
-  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/main/docs/screenshots/home-portrait-it.png?v=2" width="200" alt="Home portrait" />
+  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/d39f1215a62bfb4fbd4398484d789ac63f1c42c3/docs/screenshots/home-portrait-it.png" width="200" alt="Home portrait" />
   <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/main/docs/screenshots/game-portrait-it.png" width="200" alt="Anteprima portrait della schermata reale di gioco in landscape" />
 </p>
 

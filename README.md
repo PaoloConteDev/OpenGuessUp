@@ -13,7 +13,7 @@
 - No account, ads, purchases, tracking or backend required.
 
 <p align="center">
-  <img src="docs/screenshots/home-portrait-it.png?v=2" width="200" alt="Home screen in portrait orientation" />
+  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/d39f1215a62bfb4fbd4398484d789ac63f1c42c3/docs/screenshots/home-portrait-it.png" width="200" alt="Home screen in portrait orientation" />
   <img src="docs/screenshots/game-portrait-it.png" width="200" alt="Portrait presentation of an actual landscape gameplay screen" />
 </p>
 
