@@ -10,6 +10,8 @@ export const C = {
   rose: "#F5C3AA",
   apricot: "#FFB05A",
   peach: "#FFD4AC",
+  lilac: "#E6DFFA",
+  lilacPressed: "#D9CFF2",
   ink: "#422339",
   cream: "#FFFFFF",
   primary: "#286554",

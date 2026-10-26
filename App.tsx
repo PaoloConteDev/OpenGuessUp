@@ -402,11 +402,6 @@ function Main() {
                     }}
                   >
                     GuessUp
-                    {!compactHeader && (
-                      <Txt style={{ fontSize: brandFontSize, color: C.text }}>
-                        ↗
-                      </Txt>
-                    )}
                   </Txt>
                   <Txt
                     style={{

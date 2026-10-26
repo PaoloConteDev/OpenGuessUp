@@ -9,6 +9,7 @@ Party game offline per Android: un telefono sulla fronte, gli amici danno gli in
 - Registrazione rimossa, insieme ai permessi per fotocamera, microfono e galleria.
 - Nessun account, pubblicità, tracking o backend necessario.
 - Icona installata uguale al simbolo della home: ScanFace prugna su fondo albicocca, anche nella variante adattiva Android.
+- Marchio senza freccia e card di scoperta categorie in lilla chiaro, distinta dai colori dei mazzi.
 
 ## Installazione
 

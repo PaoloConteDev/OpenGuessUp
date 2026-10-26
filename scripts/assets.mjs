@@ -12,18 +12,31 @@ const paths = [
   "M9 9h.01",
   "M15 9h.01",
 ];
-const mark = `<g transform="rotate(-5 512 512) translate(208 208) scale(${608 / 24})" fill="none" stroke="#422339" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${paths.map((d) => `<path d="${d}"/>`).join("")}</g>`;
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024"><rect width="1024" height="1024" fill="#FFB05A"/>${mark}</svg>`;
+const mark = (size) =>
+  `<g transform="rotate(-5 512 512) translate(${(1024 - size) / 2} ${(1024 - size) / 2}) scale(${size / 24})" fill="none" stroke="#422339" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${paths.map((d) => `<path d="${d}"/>`).join("")}</g>`;
+// Android shows the inner 72dp of the 108dp adaptive layers. The 532px
+// foreground therefore matches the 800px legacy mark after that crop and
+// stays inside the 66dp-diameter safe circle (radius 313px at this size).
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024"><rect width="1024" height="1024" fill="#FFB05A"/>${mark(800)}</svg>`;
 await writeFile("assets/icon.svg", svg);
 await sharp(Buffer.from(svg)).png().toFile("assets/icon.png");
 await sharp(Buffer.from(svg)).resize(64).png().toFile("assets/favicon.png");
 await sharp(
   Buffer.from(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024">${mark}</svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024">${mark(532)}</svg>`,
   ),
 )
   .png()
   .toFile("assets/adaptive-icon.png");
+await mkdir("docs", { recursive: true });
+const preview = await sharp(Buffer.from(svg)).resize(256).png().toBuffer();
+const roundMask = Buffer.from(
+  '<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256"><circle cx="128" cy="128" r="128" fill="white"/></svg>',
+);
+await sharp(preview)
+  .composite([{ input: roundMask, blend: "dest-in" }])
+  .png()
+  .toFile("docs/app-icon-preview.png");
 function wav(notes, duration) {
   const rate = 22050,
     count = Math.floor(rate * duration),

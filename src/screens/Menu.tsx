@@ -297,9 +297,9 @@ export function Home({
         style={({ pressed }) => ({
           padding: 25,
           borderRadius: 24,
-          backgroundColor: pressed ? C.panelLight : C.peach,
+          backgroundColor: pressed ? C.lilacPressed : C.lilac,
           borderWidth: 1,
-          borderColor: C.mint + "50",
+          borderColor: C.ink + "20",
           gap: 10,
         })}
       >
