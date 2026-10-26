@@ -18,7 +18,6 @@ import {
   SkipForward,
   Smartphone,
   Trophy,
-  Video,
   Volume2,
   VolumeX,
 } from "lucide-react-native";
@@ -45,7 +44,6 @@ import {
   winners,
 } from "../game/engine";
 import { useTilt } from "../hooks/useTilt";
-import { Recording } from "../components/Recording";
 export function Match({
   game,
   now,
@@ -76,19 +74,18 @@ export function Match({
   const { t } = useI18n();
   const { width, height } = useWindowDimensions();
   const landscape = width > height;
+  const [manual, setManual] = useState(false);
+  const sensorPlaying = useRef(false);
   const sensorRequested =
     game.settings.sensors &&
+    !manual &&
     ["preparation", "countdown", "active", "paused"].includes(game.phase);
   const feedback = game.phase === "active" && now < game.lockUntil;
   const tilt = useTilt(
     sensorRequested,
-    game.phase === "active" && !feedback && landscape,
+    sensorRequested && game.phase === "active" && !feedback && landscape,
     onAnswer,
   );
-  const [recordEnabled, setRecordEnabled] = useState(false);
-  const [cameraReady, setCameraReady] = useState(true);
-  const [notice, setNotice] = useState("");
-  const [manual, setManual] = useState(false);
   const phase = game.phase;
   const team = game.teams[teamIndex(game)] ?? game.teams[0]!;
   const turnScore = points(game.entries, game.settings);
@@ -126,10 +123,30 @@ export function Match({
     window.addEventListener("keydown", handle);
     return () => window.removeEventListener("keydown", handle);
   }, [game.phase, onAnswer, onPause, onStart]);
-  const showSensor =
-    sensorRequested && Platform.OS !== "web" && tilt.available && !manual;
+  const showSensor = sensorRequested && Platform.OS !== "web" && tilt.available;
   const readyToStart =
-    (!showSensor || tilt.calibrated) && (!recordEnabled || cameraReady);
+    Platform.OS === "web" ||
+    !sensorRequested ||
+    tilt.status === "unavailable" ||
+    (tilt.available && tilt.calibrated);
+  const beginTurn = () => {
+    sensorPlaying.current = showSensor && tilt.calibrated;
+    if (
+      sensorRequested &&
+      Platform.OS !== "web" &&
+      tilt.status === "unavailable"
+    )
+      setManual(true);
+    onStart();
+  };
+  useEffect(() => {
+    if (
+      ["active", "countdown"].includes(game.phase) &&
+      sensorPlaying.current &&
+      tilt.status === "unavailable"
+    )
+      onPause();
+  }, [game.phase, tilt.status, onPause]);
   if (phase === "finished") {
     const win = winners(game);
     const ranked = [...game.teams].sort((a, b) => b.score - a.score);
@@ -445,9 +462,10 @@ export function Match({
         <Button title={t("Pausa")} secondary icon={Pause} onPress={onPause} />
       </View>
     ) : phase === "paused" ? (
-      <View
-        style={{
-          flex: 1,
+      <ScrollView
+        style={{ flex: 1 }}
+        contentContainerStyle={{
+          flexGrow: 1,
           alignItems: "center",
           justifyContent: "center",
           gap: 16,
@@ -475,18 +493,31 @@ export function Match({
           <Button
             title={t("Riprendi il turno")}
             icon={Play}
-            onPress={onStart}
+            disabled={!readyToStart || tilt.calibrating}
+            onPress={beginTurn}
           />
-          <Button
-            title={t("Ricalibra")}
-            secondary
-            icon={RotateCcw}
-            onPress={() => {
-              tilt.reset();
-              setManual(false);
-              void tilt.calibrate();
-            }}
-          />
+          {showSensor && (
+            <Button
+              title={t("Ricalibra")}
+              secondary
+              icon={RotateCcw}
+              onPress={() => {
+                tilt.calibrate();
+              }}
+              disabled={tilt.calibrating}
+            />
+          )}
+          {sensorRequested && Platform.OS !== "web" && (
+            <Button
+              title={t("Manuali")}
+              secondary
+              icon={null}
+              onPress={() => {
+                sensorPlaying.current = false;
+                setManual(true);
+              }}
+            />
+          )}
           <Button
             title={t("Concludi questo turno")}
             secondary
@@ -500,9 +531,37 @@ export function Match({
             onPress={onHome}
           />
         </View>
+        {sensorRequested && Platform.OS !== "web" && (
+          <Txt style={{ color: C.muted, textAlign: "center" }}>
+            {t(
+              tilt.status === "checking"
+                ? "Controllo del sensore…"
+                : tilt.status === "unavailable"
+                  ? "Sensore interrotto. Riprova o usa i pulsanti."
+                  : !tilt.calibrated
+                    ? "Ricalibra prima di riprendere."
+                    : "Sensore pronto.",
+            )}
+          </Txt>
+        )}
+        {sensorRequested &&
+          Platform.OS !== "web" &&
+          tilt.status === "unavailable" && (
+            <Button
+              title={t("Riprova sensore")}
+              secondary
+              icon={RotateCcw}
+              onPress={tilt.retry}
+            />
+          )}
         {tilt.calibrating && (
           <Txt>
-            {t("Mantieni il telefono fermo sulla fronte per un secondo.")}
+            {tilt.calibrationSeconds > 0
+              ? t(
+                  "Porta il telefono sulla fronte: {{0}}",
+                  tilt.calibrationSeconds,
+                )
+              : t("Mantieni il telefono fermo sulla fronte per un secondo.")}
           </Txt>
         )}
         {tilt.error && (
@@ -510,7 +569,7 @@ export function Match({
             {t("Tieni il telefono più verticale e fermo, poi riprova.")}
           </Txt>
         )}
-      </View>
+      </ScrollView>
     ) : (
       <View
         style={{
@@ -559,25 +618,60 @@ export function Match({
         </Txt>
         {showSensor ? (
           <View style={{ gap: 8 }}>
+            <Txt style={{ color: C.muted, fontSize: 13 }}>
+              {t("Dopo il tocco hai 3 secondi per metterlo sulla fronte.")}
+            </Txt>
             <Button
               title={t(
                 tilt.calibrated
                   ? "Posizione calibrata"
                   : "Calibra posizione neutra",
               )}
-              color={tilt.calibrated ? C.mint : C.mint}
+              color={C.mint}
               icon={RotateCcw}
               disabled={tilt.calibrating}
-              onPress={() => void tilt.calibrate()}
+              onPress={tilt.calibrate}
             />
             {tilt.calibrating && (
               <Txt style={{ color: C.muted, fontSize: 13 }}>
-                {t("Mantieni il telefono fermo sulla fronte per un secondo.")}
+                {tilt.calibrationSeconds > 0
+                  ? t(
+                      "Porta il telefono sulla fronte: {{0}}",
+                      tilt.calibrationSeconds,
+                    )
+                  : t(
+                      "Mantieni il telefono fermo sulla fronte per un secondo.",
+                    )}
               </Txt>
             )}
             {tilt.error && (
               <Txt style={{ color: C.danger, fontSize: 13 }}>
                 {t("Tieni il telefono più verticale e fermo, poi riprova.")}
+              </Txt>
+            )}
+            {tilt.calibrated && (
+              <Txt
+                accessibilityLiveRegion="polite"
+                style={{
+                  textAlign: "center",
+                  fontFamily: FONT.bold,
+                  color:
+                    tilt.position === "correct"
+                      ? C.success
+                      : tilt.position === "skip"
+                        ? C.danger
+                        : C.text,
+                }}
+              >
+                {tilt.position === "correct"
+                  ? `↓ ${t("Indovinata")}`
+                  : tilt.position === "skip"
+                    ? `↑ ${t("Passa")}`
+                    : t(
+                        tilt.position === "return"
+                          ? "Torna al centro"
+                          : "Sensore pronto. Prova a inclinare il telefono.",
+                      )}
               </Txt>
             )}
             <Button
@@ -588,22 +682,46 @@ export function Match({
             />
           </View>
         ) : (
-          <Txt style={{ fontSize: 13, color: C.muted }}>
-            {t(
-              Platform.OS === "web"
-                ? "Il browser usa pulsanti e tastiera: ↓ corretta, ↑ passa, spazio pausa."
-                : sensorRequested
-                  ? "Sensore non disponibile. Usa i pulsanti."
-                  : "Manuali",
-            )}
-          </Txt>
+          <View style={{ gap: 8 }}>
+            <Txt style={{ fontSize: 13, color: C.muted }}>
+              {t(
+                Platform.OS === "web"
+                  ? "Il browser usa pulsanti e tastiera: ↓ corretta, ↑ passa, spazio pausa."
+                  : sensorRequested
+                    ? tilt.status === "checking"
+                      ? "Controllo del sensore…"
+                      : "Sensore non disponibile. Usa i pulsanti."
+                    : "Manuali",
+              )}
+            </Txt>
+            {sensorRequested &&
+              Platform.OS !== "web" &&
+              tilt.status === "unavailable" && (
+                <Button
+                  title={t("Riprova sensore")}
+                  secondary
+                  icon={RotateCcw}
+                  onPress={tilt.retry}
+                />
+              )}
+            {sensorRequested &&
+              Platform.OS !== "web" &&
+              tilt.status === "checking" && (
+                <Button
+                  title={t("Manuali")}
+                  secondary
+                  icon={null}
+                  onPress={() => setManual(true)}
+                />
+              )}
+          </View>
         )}
         <View style={{ flexDirection: "row", gap: 12 }}>
           <Button
             title={`${t("Andiamo!")} · ${game.settings.seconds}s`}
             icon={Play}
             disabled={!readyToStart || tilt.calibrating}
-            onPress={onStart}
+            onPress={beginTurn}
             style={{ flex: 1 }}
           />
           <IconButton icon={Home} label={t("Esci e salva")} onPress={onHome} />
@@ -631,36 +749,6 @@ export function Match({
         >
           {content}
         </ScrollView>
-      )}
-      {Platform.OS === "android" && (
-        <View
-          style={{
-            paddingHorizontal: 20,
-            paddingBottom: 8,
-            maxHeight: phase === "review" ? 240 : undefined,
-          }}
-        >
-          <ScrollView>
-            <Recording
-              key={game.turn}
-              phase={phase}
-              enabled={recordEnabled}
-              onEnabled={setRecordEnabled}
-              onReady={setCameraReady}
-              onStatus={setNotice}
-            />
-          </ScrollView>
-        </View>
-      )}
-      {notice && (
-        <View style={{ padding: 10, backgroundColor: C.panelLight }}>
-          <Txt
-            style={{ fontSize: 12, color: C.text, textAlign: "center" }}
-            onPress={() => setNotice("")}
-          >
-            {notice}
-          </Txt>
-        </View>
       )}
     </View>
   );

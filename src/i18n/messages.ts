@@ -76,21 +76,9 @@ Scegli le categorie e una partita rapida o a squadre. Ogni squadra ha un turno p
 Metti il telefono sulla fronte. Non sbirciare: gli amici vedono la parola, tu no!|||Put the phone on your forehead. No peeking: friends see the word, you don't!|||Pon el móvil en tu frente. ¡No mires! Tus amigos ven la palabra, tú no.|||Handy an die Stirn. Nicht schummeln: Deine Freunde sehen das Wort, du nicht!|||Pose le téléphone sur ton front. Sans tricher : tes amis voient le mot, toi non !
 Segui l’indizio: descrivi senza dire la risposta, mima senza parlare, canta senza dire il titolo o imita senza fare il nome.|||Follow the clue: describe without saying the answer, mime silently, sing without naming the title, or impersonate without naming the person.|||Sigue la pista: describe sin decir la respuesta, haz mímica en silencio, canta sin decir el título o imita sin decir el nombre.|||Beschreiben ohne Lösungswort, stumm darstellen, singen ohne Titel oder imitieren ohne Namen.|||Suis l’indice : décris sans dire la réponse, mime en silence, chante sans citer le titre ou imite sans donner le nom.
 Giù: +1. Su: passa. Ritorna al centro. Alla fine correggete gli esiti insieme e confermate. Vince chi ha più punti; il pareggio si festeggia insieme.|||Down: +1. Up: skip. Return to centre. Review outcomes together before confirming. Most points wins; celebrate ties together.|||Abajo: +1. Arriba: pasar. Vuelve al centro. Revisad los resultados y confirmad. Gana quien tenga más puntos; los empates se celebran juntos.|||Runter: +1. Hoch: passen. Zurück zur Mitte. Ergebnisse gemeinsam prüfen und bestätigen. Die meisten Punkte gewinnen; Gleichstand wird gemeinsam gefeiert.|||En bas : +1. En haut : passer. Reviens au centre. Vérifiez les résultats ensemble et confirmez. Le meilleur score gagne ; une égalité se fête ensemble.
-Registra gli amici|||Record your friends|||Grabar a los amigos|||Freunde aufnehmen|||Filmer les amis
-Solo Android. Fotocamera frontale e microfono, attivi soltanto durante il turno.|||Android only. Front camera and microphone, active only during the turn.|||Solo Android. Cámara frontal y micrófono activos solo durante el turno.|||Nur Android. Frontkamera und Mikrofon nur während der Runde aktiv.|||Android uniquement. Caméra frontale et micro actifs seulement pendant le tour.
-Attiva registrazione|||Enable recording|||Activar grabación|||Aufnahme aktivieren|||Activer l’enregistrement
-Permesso negato. Puoi giocare senza video.|||Permission denied. You can play without video.|||Permiso denegado. Puedes jugar sin vídeo.|||Berechtigung verweigert. Spielen geht auch ohne Video.|||Permission refusée. Tu peux jouer sans vidéo.
-Video del turno|||Turn video|||Vídeo del turno|||Rundenvideo|||Vidéo du tour
-Anteprima video|||Preview video|||Ver vídeo|||Video ansehen|||Voir la vidéo
-Salva in galleria|||Save to gallery|||Guardar en galería|||In Galerie speichern|||Enregistrer dans la galerie
-Condividi video|||Share video|||Compartir vídeo|||Video teilen|||Partager la vidéo
-Elimina video|||Delete video|||Eliminar vídeo|||Video löschen|||Supprimer la vidéo
-Video salvato|||Video saved|||Vídeo guardado|||Video gespeichert|||Vidéo enregistrée
-Video non disponibile o interrotto. Il gioco continua.|||Video unavailable or interrupted. The game continues.|||Vídeo no disponible o interrumpido. El juego continúa.|||Video nicht verfügbar oder unterbrochen. Das Spiel geht weiter.|||Vidéo indisponible ou interrompue. La partie continue.
 Archiviazione non disponibile: mantieni aperta l’app per conservare la partita.|||Storage unavailable: keep the app open to retain the game.|||Almacenamiento no disponible: mantén la app abierta para conservar la partida.|||Speicher nicht verfügbar: App geöffnet lassen, um das Spiel zu behalten.|||Stockage indisponible : garde l’application ouverte pour conserver la partie.
 Versione 1.0.0 · Fatto per stare insieme.|||Version 1.0.0 · Made to be together.|||Versión 1.0.0 · Hecho para estar juntos.|||Version 1.0.0 · Für gemeinsame Momente.|||Version 1.0.0 · Pour être ensemble.
 Torna al centro|||Return to centre|||Vuelve al centro|||Zurück zur Mitte|||Reviens au centre
-Registrazione in corso|||Recording|||Grabando|||Aufnahme läuft|||Enregistrement
 Nessuna parola prima del via. Promesso.|||No word before the start. Promise.|||Ninguna palabra antes de empezar. Prometido.|||Kein Wort vor dem Start. Versprochen.|||Aucun mot avant le départ. Promis.
 Sei pronto?|||Ready?|||¿Listo?|||Bereit?|||Prêt ?
 Seleziona almeno una categoria non vuota.|||Select at least one non-empty category.|||Elige al menos una categoría con palabras.|||Wähle mindestens eine nicht leere Kategorie.|||Choisis au moins une catégorie non vide.
@@ -98,8 +86,15 @@ Lingua|||Language|||Idioma|||Sprache|||Langue
 Codice sorgente su GitHub|||Source code on GitHub|||Código fuente en GitHub|||Quellcode auf GitHub|||Code source sur GitHub
 Impossibile aprire il link.|||Could not open the link.|||No se ha podido abrir el enlace.|||Der Link konnte nicht geöffnet werden.|||Impossible d’ouvrir le lien.
 Preparazione|||Preparation|||Preparación|||Vorbereitung|||Préparation
-Continua senza video|||Continue without video|||Continuar sin vídeo|||Ohne Video fortfahren|||Continuer sans vidéo
-Avvio fotocamera…|||Starting camera…|||Iniciando cámara…|||Kamera startet…|||Démarrage de la caméra…
+Controllo del sensore…|||Checking sensor…|||Comprobando el sensor…|||Sensor wird geprüft…|||Vérification du capteur…
+Porta il telefono sulla fronte: {{0}}|||Phone to your forehead: {{0}}|||Lleva el móvil a la frente: {{0}}|||Handy an die Stirn: {{0}}|||Place le téléphone sur ton front : {{0}}
+Dopo il tocco hai 3 secondi per metterlo sulla fronte.|||After tapping, you have 3 seconds to place it on your forehead.|||Tras tocar, tienes 3 segundos para colocarlo en la frente.|||Nach dem Tippen hast du 3 Sekunden, um es an die Stirn zu halten.|||Après avoir appuyé, tu as 3 secondes pour le placer sur ton front.
+Sensore interrotto. Riprova o usa i pulsanti.|||Sensor interrupted. Retry or use the buttons.|||Sensor interrumpido. Reinténtalo o usa los botones.|||Sensor unterbrochen. Erneut versuchen oder Tasten nutzen.|||Capteur interrompu. Réessaie ou utilise les boutons.
+Ricalibra prima di riprendere.|||Recalibrate before resuming.|||Recalibra antes de continuar.|||Vor dem Fortsetzen neu kalibrieren.|||Recalibre avant de reprendre.
+Sensore pronto.|||Sensor ready.|||Sensor listo.|||Sensor bereit.|||Capteur prêt.
+Sensore pronto. Prova a inclinare il telefono.|||Sensor ready. Try tilting the phone.|||Sensor listo. Prueba a inclinar el móvil.|||Sensor bereit. Neige das Handy zum Testen.|||Capteur prêt. Essaie d’incliner le téléphone.
+Riprova sensore|||Retry sensor|||Reintentar sensor|||Sensor erneut versuchen|||Réessayer le capteur
+Il sensore è disponibile nell’app Android. Nel browser usa i comandi manuali.|||Tilt controls are available in the Android app. Use manual controls in the browser.|||La inclinación está disponible en la app Android. En el navegador usa los controles manuales.|||Neigungssteuerung gibt es in der Android-App. Im Browser die Tasten nutzen.|||L’inclinaison est disponible dans l’app Android. Utilise les boutons dans le navigateur.
 Round|||Round|||Ronda|||Runde|||Manche`;
 export const MESSAGE_ROWS = [
   ...COMMON,

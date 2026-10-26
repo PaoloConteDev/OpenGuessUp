@@ -55,7 +55,6 @@ import { categories, categoryWords } from "./src/data/catalog";
 import * as E from "./src/game/engine";
 import * as Storage from "./src/storage";
 import { useFeedback } from "./src/hooks/useFeedback";
-import { cleanOldVideos } from "./src/components/Recording";
 type Screen =
   "home" | "decks" | "setup" | "rules" | "settings" | "languages" | "match";
 export default function App() {
@@ -123,7 +122,6 @@ function Main() {
         setLoaded(true);
       }
     });
-    void cleanOldVideos();
     return () => {
       alive = false;
     };
@@ -539,13 +537,27 @@ function Main() {
                           setSettings((s) => ({ ...s, haptics: v }))
                         }
                       />
-                      <Toggle
-                        title={t("Inclinazione")}
-                        value={settings.sensors}
-                        onChange={(v) =>
-                          setSettings((s) => ({ ...s, sensors: v }))
-                        }
-                      />
+                      {Platform.OS !== "web" ? (
+                        <Toggle
+                          title={t("Inclinazione")}
+                          value={settings.sensors}
+                          onChange={(v) =>
+                            setSettings((s) => ({ ...s, sensors: v }))
+                          }
+                        />
+                      ) : (
+                        <Txt
+                          style={{
+                            color: C.muted,
+                            fontSize: 13,
+                            lineHeight: 20,
+                          }}
+                        >
+                          {t(
+                            "Il sensore è disponibile nell’app Android. Nel browser usa i comandi manuali.",
+                          )}
+                        </Txt>
+                      )}
                       <Button
                         title={t("Lingua")}
                         secondary

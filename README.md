@@ -81,21 +81,21 @@ Ogni mazzo appartiene alla lingua di creazione. La partita salva una **copia com
 
 ## Sensori e orientamento Android
 
-`expo-sensors` legge l'accelerometro a 20 Hz. Il valore gravitazionale Z è indipendente dalla scelta landscape sinistra/destra. La calibrazione rifiuta una posizione troppo piatta o instabile. Filtro passa-basso 0,22; attivazione a ±0,58 g rispetto alla posizione neutra e rientro entro ±0,18 g per quattro campioni. Una sola risposta per inclinazione; countdown, pausa e feedback disarmano il rilevatore e richiedono il rientro neutro. Un watchdog rileva l'assenza di campioni; i comandi manuali restano disponibili.
+`expo-sensors` legge l'accelerometro a 20 Hz. L'inclinazione viene calcolata con `atan2(z, hypot(x,y))`, indipendente dalla scelta landscape sinistra/destra. La calibrazione lascia prima 3 secondi per portare il telefono sulla fronte, poi misura circa un secondo da fermo e accetta una posizione neutra stabile entro ±35°. Dopo la calibrazione puoi provare l'inclinazione nella preparazione, senza assegnare punti.
 
-`expo-screen-orientation` blocca realmente in landscape preparazione e turno, e ripristina portrait nei menu/riepiloghi. Nessun componente viene semplicemente ruotato per simulare l'orientamento. Keep-awake mantiene attivo lo schermo durante countdown e turno. Le subscription vengono rimosse all'uscita.
+Il filtro usa il tempo trascorso (costante 90 ms), soglia di attivazione ±26°, rientro entro ±12° stabile per 160 ms e inclinazione confermata per 80 ms. Una sola risposta per gesto, senza punteggi durante preparazione, countdown, pausa o feedback. La posizione neutra può essere rilevata durante il countdown per riconoscere anche il primo gesto. I comandi manuali disattivano realmente la subscription.
 
-**I test del filtro sono simulati. Non sostituiscono una prova dell'inclinazione su telefono fisico.** Il segno e le soglie vanno verificati impugnando il dispositivo sulla fronte; è disponibile la ricalibrazione in pausa.
+La disponibilità richiede campioni reali: in assenza di dati per 2,5 secondi il turno con sensore viene messo in pausa. Quando i campioni tornano la disponibilità si ripristina, ma serve una nuova calibrazione. Sono disponibili ricalibrazione, nuovo tentativo e passaggio ai pulsanti. Le subscription e i timer vengono rimossi all'uscita; il ritorno dal background riconnette il sensore e richiede una ripresa esplicita. Il browser presenta soltanto pulsanti e tastiera.
 
-## Registrazione opzionale, solo Android
+`expo-screen-orientation` blocca realmente in landscape preparazione e turno, e ripristina portrait nei menu/riepiloghi. Keep-awake mantiene attivo lo schermo durante countdown e turno.
 
-Nella preparazione puoi scegliere «Attiva registrazione». Solo allora vengono richiesti fotocamera e microfono. Il rifiuto lascia il gioco utilizzabile. Si usa la fotocamera frontale; compare una piccola anteprima, poi la registrazione parte con il turno e si arresta alla pausa, al background o alla fine. Una ripresa dopo la pausa produce un segmento separato.
+**I test usano stream simulati e non sostituiscono una prova su telefono fisico.** La registrazione è stata rimossa: non vengono richiesti fotocamera, microfono o accesso alla galleria.
 
-Nel riepilogo: anteprima con player nativo, salvataggio in galleria (permesso richiesto solo su quel comando), condivisione di sistema e cancellazione. I file temporanei vengono rimossi quando si lascia il turno; quelli orfani dopo una chiusura forzata vengono ripuliti dopo 24 ore al successivo avvio. Salva o condividi prima di confermare. I video non fanno parte del salvataggio riprendibile. Nessun comando video appare nel browser o su iOS.
+Riferimenti tecnici: [coordinate dei sensori Android](https://developer.android.com/develop/sensors-and-location/sensors/sensors_overview#sensors-coords) e [API Accelerometer di Expo](https://docs.expo.dev/versions/latest/sdk/accelerometer/). Il segno delle misure è verificato anche nel modulo nativo della versione Expo installata.
 
 ## APK Android
 
-Scarica l'APK per telefoni ARM64 dalla [release v1.0.0](https://github.com/PaoloConteDev/OpenGuessUp/releases/tag/v1.0.0) (circa 34 MB). Nelle build locali il file è `artifacts/OpenGuessUp-1.0.0-arm64.apk`. Copialo sul telefono, aprilo e consenti l'installazione dalla fonte scelta. È un APK autonomo di test, firmato con la chiave debug Expo; non richiede Expo Go. Firma e metadati sono controllati, ma non è stato installato su un dispositivo fisico durante questa sessione.
+Scarica l'APK per telefoni ARM64 dalla [release v1.0.0](https://github.com/PaoloConteDev/OpenGuessUp/releases/tag/v1.0.0) (circa 27 MB). Nelle build locali il file è `artifacts/OpenGuessUp-1.0.0-arm64.apk`. Copialo sul telefono, aprilo e consenti l'installazione dalla fonte scelta. È un APK autonomo di test, firmato con la chiave debug Expo; non richiede Expo Go. Firma e metadati sono controllati, ma non è stato installato su un dispositivo fisico durante questa sessione.
 
 Identità autonoma: **Open GuessUp**, slug `open-guess`, schema `openguess`, package `it.gleetch.openguess`, versione 1.0.0. Nessun ID EAS, proprietario o segreto di Open Taboo. Android minimo API 24. Icone e suoni propri inclusi.
 
@@ -149,7 +149,7 @@ I test del motore verificano punteggi, penalità, turni uguali per 2–4 squadre
 - `src/game/engine.ts`: motore puro, nessuna dipendenza UI, storage o sensore.
 - `src/game/tilt.ts`: filtro e isteresi puri.
 - `src/hooks/useTilt.ts`: acquisizione Expo e calibrazione.
-- `src/components/Recording.tsx`: registrazione e strumenti nativi.
+- `src/game/tiltSession.ts`: ciclo di vita del sensore, calibrazione e recupero del segnale.
 - `src/screens/`: menu, editor, impostazioni e partita.
 - `src/data/`: contenuti locali e validazione mazzi.
 - `src/i18n/`: tutte le stringhe locali.

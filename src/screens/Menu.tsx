@@ -907,11 +907,15 @@ export function Setup({
           <Panel>
             <Choices
               label={t("Controlli")}
-              items={[
-                { value: 1, label: t("Inclinazione") },
-                { value: 0, label: t("Manuali") },
-              ]}
-              value={settings.sensors ? 1 : 0}
+              items={
+                Platform.OS === "web"
+                  ? [{ value: 0, label: t("Manuali") }]
+                  : [
+                      { value: 1, label: t("Inclinazione") },
+                      { value: 0, label: t("Manuali") },
+                    ]
+              }
+              value={Platform.OS !== "web" && settings.sensors ? 1 : 0}
               onChange={(v) => update("sensors", !!v)}
             />
             {Platform.OS === "web" && (

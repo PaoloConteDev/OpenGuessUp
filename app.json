@@ -10,14 +10,19 @@
     "icon": "./assets/icon.png",
     "android": {
       "package": "it.gleetch.openguess",
-      "versionCode": 11,
+      "versionCode": 12,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFF9F0"
       },
       "blockedPermissions": [
         "android.permission.SYSTEM_ALERT_WINDOW",
-        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
+        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_MEDIA_VIDEO",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
       ]
     },
     "ios": {
@@ -39,24 +44,6 @@
           "microphonePermission": false,
           "recordAudioAndroid": false,
           "enableBackgroundPlayback": false
-        }
-      ],
-      [
-        "expo-camera",
-        {
-          "cameraPermission": "Registra gli amici solo quando lo scegli.",
-          "microphonePermission": "Aggiungi l’audio al tuo video del turno.",
-          "recordAudioAndroid": true
-        }
-      ],
-      [
-        "expo-media-library",
-        {
-          "photosPermission": "Scegli di salvare i video del gioco.",
-          "savePhotosPermission": "Salva i tuoi video nella galleria.",
-          "granularPermissions": [
-            "video"
-          ]
         }
       ],
       "./scripts/withShortPaths.cjs"

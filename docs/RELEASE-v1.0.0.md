@@ -5,7 +5,8 @@ Party game offline per Android: un telefono sulla fronte, gli amici danno gli in
 - Partita rapida o 2–4 squadre, timer configurabile, passaggi e riepilogo modificabile.
 - Dodici categorie, 3.600 voci per lingua, italiano, inglese, spagnolo, francese e tedesco.
 - Mazzi personali, salvataggio locale, pausa e ripresa, controlli manuali e tramite inclinazione.
-- Registrazione Android opzionale con anteprima, salvataggio e condivisione.
+- Calibrazione del sensore con prova prima del turno, recupero del segnale e fallback manuale.
+- Registrazione rimossa, insieme ai permessi per fotocamera, microfono e galleria.
 - Nessun account, pubblicità, tracking o backend necessario.
 
 ## Installazione
@@ -14,4 +15,4 @@ Scarica `OpenGuessUp-1.0.0-arm64.apk` su un telefono Android ARM64 (Android 7/AP
 
 ## Verifiche e limiti
 
-Typecheck, 46 test automatici, export web/Android e prove complete nel browser superati. APK nativo compilato e firma verificata. Sensori, orientamento, feedback tattile e registrazione richiedono ancora un collaudo su dispositivo fisico. I contenuti localizzati non hanno ricevuto una revisione linguistica professionale. Dettagli in `docs/VALIDATION.md`.
+Typecheck, 60 test automatici, export web/Android e prove complete nel browser superati. APK nativo compilato e firma verificata. Sensori, orientamento, feedback tattile richiedono ancora un collaudo su dispositivo fisico. I contenuti localizzati non hanno ricevuto una revisione linguistica professionale. Dettagli in `docs/VALIDATION.md`.

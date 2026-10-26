@@ -1,7 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import * as E from "../src/game/engine";
-import { TiltGate } from "../src/game/tilt";
 import { parseWords, validDeck, customWords } from "../src/data/custom";
 import {
   normalizeLanguage,
@@ -273,36 +272,4 @@ test("Categories, rules and headline have translated interface strings", () => {
       "Come si gioca in 4 mosse.",
     );
   }
-});
-test("Tilt filters jitter, emits once, requires neutral rearm", () => {
-  const gate = new TiltGate();
-  gate.calibrate(0);
-  const events = [];
-  for (let i = 0; i < 12; i++)
-    events.push(gate.sample(i % 2 ? 0.05 : -0.05, true));
-  assert.ok(events.every((x) => x === null));
-  let hits = 0;
-  for (let i = 0; i < 40; i++) if (gate.sample(-1, true) === "correct") hits++;
-  assert.equal(hits, 1);
-  for (let i = 0; i < 30; i++) gate.sample(0, true);
-  for (let i = 0; i < 20; i++) if (gate.sample(1, true) === "skip") hits++;
-  assert.equal(hits, 2);
-});
-test("Tilt remains inactive in countdown, pause and feedback", () => {
-  const g = new TiltGate();
-  g.calibrate(0);
-  for (let i = 0; i < 20; i++) g.sample(0, true);
-  for (let i = 0; i < 20; i++) assert.equal(g.sample(-1, false), null);
-  for (let i = 0; i < 20; i++) assert.equal(g.sample(-1, true), null);
-});
-test("Tilt is relative to calibrated baseline and ignores invalid measurements", () => {
-  const g = new TiltGate();
-  assert.equal(g.sample(-1, true), null);
-  g.calibrate(0.1);
-  assert.equal(g.sample(NaN, true), null);
-  for (let i = 0; i < 10; i++) g.sample(0.1, true);
-  let hit = false;
-  for (let i = 0; i < 25; i++)
-    if (g.sample(-0.8, true) === "correct") hit = true;
-  assert.ok(hit);
 });
