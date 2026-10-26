@@ -24,7 +24,7 @@ Gli allegati comprendono anche `OpenGuessUp-1.1.0-source.zip` e `SHA256SUMS.txt`
 
 <p>
   <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/ddddb186ec6463cef0167ad8c3675bd6f601fb60/docs/screenshots/home-portrait-en.png" width="200" alt="English home screen in portrait orientation" />
-  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/ddddb186ec6463cef0167ad8c3675bd6f601fb60/docs/screenshots/game-portrait-en.png" width="200" alt="English gameplay screen in a portrait presentation" />
+  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/ef8da246f3dc344fbbaf8550d08bc4fe969f3433/docs/screenshots/game-portrait-en.png" width="200" alt="English gameplay screen showing Penguin in a portrait presentation" />
 </p>
 
 English home and gameplay screens, presented in portrait format. Turns are played in landscape, as shown in the second preview.

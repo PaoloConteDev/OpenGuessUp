@@ -14,7 +14,7 @@
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/ddddb186ec6463cef0167ad8c3675bd6f601fb60/docs/screenshots/home-portrait-en.png" width="200" alt="English home screen in portrait orientation" />
-  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/ddddb186ec6463cef0167ad8c3675bd6f601fb60/docs/screenshots/game-portrait-en.png" width="200" alt="English gameplay screen in a portrait presentation" />
+  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/ef8da246f3dc344fbbaf8550d08bc4fe969f3433/docs/screenshots/game-portrait-en.png" width="200" alt="English gameplay screen showing Penguin in a portrait presentation" />
 </p>
 
 The home screen and actual gameplay, presented in portrait format. Turns are played in landscape, as shown in the second preview. Both screenshots use the English interface.
