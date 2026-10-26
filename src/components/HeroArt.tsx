@@ -1,8 +1,12 @@
 import { View } from "react-native";
-import Svg, { Circle, Ellipse, G, Path, Rect, Line } from "react-native-svg";
-import { Txt } from "./UI";
+import Svg, { Circle, Ellipse, G, Path, Rect, Text } from "react-native-svg";
 import { C, FONT } from "../theme";
-// Original, code-drawn illustration. No downloaded or generated raster artwork.
+
+const SKIN = "#F8BD91";
+const SKIN_SHADE = "#E69E76";
+
+// Original vector artwork. One coordinate system keeps the face, hands and
+// phone lettering aligned at every screen width, including native Android.
 export function HeroArt({
   word = "PIZZA",
   correct = "Indovinata!",
@@ -12,168 +16,370 @@ export function HeroArt({
 }) {
   return (
     <View
+      testID="home-illustration"
+      accessible
+      accessibilityRole="image"
+      accessibilityLabel={`${word} · ${correct}`}
       style={{
-        height: 340,
         width: "100%",
         maxWidth: 470,
+        aspectRatio: 460 / 360,
         alignSelf: "center",
-        alignItems: "center",
-        justifyContent: "center",
       }}
     >
-      <Svg width="100%" height="100%" viewBox="0 0 460 340">
-        <Circle cx="230" cy="170" r="147" fill={C.panel} />
-        <Rect
-          x="66"
-          y="43"
-          width="9"
-          height="24"
-          rx="3"
-          fill={C.blue}
-          transform="rotate(-26 70 55)"
-        />
-        <Rect
-          x="365"
-          y="122"
-          width="8"
-          height="22"
-          rx="3"
-          fill={C.red}
-          transform="rotate(31 369 133)"
-        />
-        <Circle cx="116" cy="283" r="5" fill={C.yellow} />
-        <Circle cx="333" cy="37" r="4" fill={C.blue} />
-        <Circle
-          cx="230"
-          cy="170"
-          r="165"
+      <Svg width="100%" height="100%" viewBox="0 0 460 360">
+        <Circle cx="232" cy="181" r="151" fill={C.discovery} />
+        <Circle cx="232" cy="181" r="131" fill={C.panel} opacity={0.65} />
+        <Path
+          d="M78 214A159 159 0 0 1 291 33M382 127A159 159 0 0 1 322 312"
           fill="none"
           stroke={C.line}
-          strokeDasharray="48 12 4 12"
+          strokeWidth="1.5"
+          strokeDasharray="6 10"
+          strokeLinecap="round"
         />
         <Ellipse
           cx="232"
-          cy="317"
-          rx="120"
-          ry="11"
-          fill={C.primary}
-          opacity="0.13"
-        />
-        <Path d="M120 322 Q128 237 230 240 Q331 238 341 322" fill={C.green} />
-        <Path
-          d="M196 245 L196 220 L266 220 L266 245 Q235 283 196 245"
-          fill="#F2A77F"
-        />
-        <Ellipse cx="231" cy="169" rx="79" ry="93" fill="#FFC49A" />
-        <Circle cx="151" cy="178" r="14" fill="#FFC49A" />
-        <Circle cx="311" cy="178" r="14" fill="#FFC49A" />
-        <Path
-          d="M153 143 Q132 54 215 53 Q300 30 311 141 L288 126 Q245 145 175 120Z"
+          cy="339"
+          rx="112"
+          ry="9"
           fill={C.ink}
+          opacity={0.08}
         />
+
+        {/* Raised forearms sit behind the shoulders and the phone. */}
         <Path
-          d="M190 185 Q199 176 208 185 M253 185 Q262 176 271 185"
-          fill="none"
+          d="M155 286C127 272 108 244 102 214L91 160C89 148 94 139 103 140L118 157L128 208C133 231 147 245 171 254Z"
+          fill={SKIN}
           stroke={C.ink}
-          strokeWidth="5"
-          strokeLinecap="round"
+          strokeWidth="3"
+          strokeLinejoin="round"
         />
-        <Path d="M211 212 Q232 238 254 210Z" fill={C.ink} />
         <Path
-          d="M219 219 Q234 226 246 218"
+          d="M295 257C318 242 331 219 336 195L346 144C348 134 357 131 365 141L372 156L361 214C356 244 342 269 314 285Z"
+          fill={SKIN}
+          stroke={C.ink}
+          strokeWidth="3"
+          strokeLinejoin="round"
+        />
+        <Path
+          d="M103 177L111 214Q117 248 141 263"
           fill="none"
-          stroke={C.red}
+          stroke={SKIN_SHADE}
           strokeWidth="7"
           strokeLinecap="round"
         />
         <Path
-          d="M135 295 Q97 250 92 184 Q91 162 102 143 Q115 130 122 150 L126 188 L156 247"
-          fill="#FFC49A"
+          d="M355 176L349 211Q342 243 323 260"
+          fill="none"
+          stroke={SKIN_SHADE}
+          strokeWidth="7"
+          strokeLinecap="round"
+        />
+
+        {/* Shirt, neck and seams give the silhouette a finished shape. */}
+        <Path
+          d="M188 263C164 264 141 274 122 294L145 319L160 310L153 338H310L303 311L319 320L343 293C325 275 300 265 274 263Z"
+          fill={C.green}
+          stroke={C.ink}
+          strokeWidth="3.5"
+          strokeLinejoin="round"
         />
         <Path
-          d="M324 289 Q359 238 363 180 Q365 159 351 141 Q338 132 332 152 L327 187 L302 246"
-          fill="#FFC49A"
+          d="M159 300L166 283M303 300L295 283"
+          fill="none"
+          stroke={C.success}
+          strokeOpacity={0.45}
+          strokeWidth="3"
+          strokeLinecap="round"
         />
-        <G transform="rotate(-8 230 112)">
-          <Rect x="98" y="65" width="267" height="113" rx="21" fill={C.ink} />
-          <Rect
-            x="106"
-            y="73"
-            width="251"
-            height="97"
-            rx="15"
+        <Path
+          d="M153 331H310"
+          fill="none"
+          stroke={C.success}
+          strokeOpacity={0.2}
+          strokeWidth="5"
+        />
+        <Path
+          d="M205 239L203 269Q230 295 260 268L258 238Z"
+          fill={SKIN}
+          stroke={C.ink}
+          strokeWidth="3"
+        />
+        <Path
+          d="M205 245Q232 268 258 245L259 257Q230 278 204 257Z"
+          fill={SKIN_SHADE}
+        />
+        <Path
+          d="M193 268Q231 310 272 268"
+          fill="none"
+          stroke={C.success}
+          strokeWidth="4"
+          strokeLinecap="round"
+        />
+        <G transform="rotate(8 278 311)">
+          <Rect x="265" y="298" width="26" height="26" rx="8" fill={C.blue} />
+          <Path
+            d="M278 303L280 309L286 311L280 313L278 319L276 313L270 311L276 309Z"
             fill={C.yellow}
           />
-          <Rect x="112" y="100" width="5" height="38" rx="3" fill={C.ink} />
-          <Circle cx="346" cy="121" r="4" fill={C.ink} />
-          <Path
-            d="M222 84 L236 84"
+        </G>
+
+        <G transform="rotate(-4 231 181)">
+          <Ellipse
+            cx="163"
+            cy="184"
+            rx="13"
+            ry="20"
+            fill={SKIN}
             stroke={C.ink}
+            strokeWidth="3"
+          />
+          <Ellipse
+            cx="297"
+            cy="184"
+            rx="13"
+            ry="20"
+            fill={SKIN}
+            stroke={C.ink}
+            strokeWidth="3"
+          />
+          <Path
+            d="M160 179Q171 176 166 190M300 179Q289 176 294 190"
+            fill="none"
+            stroke={SKIN_SHADE}
             strokeWidth="3"
             strokeLinecap="round"
           />
+          <Path
+            d="M166 142C166 106 193 84 229 84C269 84 295 109 295 145L292 194C289 235 264 260 231 262C197 261 173 236 169 200Z"
+            fill={SKIN}
+            stroke={C.ink}
+            strokeWidth="3.5"
+          />
+          <Path
+            d="M177 199C180 227 199 250 231 253C253 254 273 242 285 222C275 247 254 261 231 262C198 261 175 238 170 210Z"
+            fill={SKIN_SHADE}
+            opacity={0.5}
+          />
+          <Path
+            d="M166 166C151 141 157 105 172 88C164 76 177 62 197 67C202 48 224 49 236 61C256 42 282 56 281 72C307 76 317 106 297 151L284 134C256 145 236 128 218 123C199 137 181 133 177 154L174 169Z"
+            fill={C.ink}
+          />
+          <Path
+            d="M188 91Q212 69 234 80M247 79Q266 71 281 92"
+            fill="none"
+            stroke={C.primary}
+            strokeWidth="4"
+            strokeLinecap="round"
+            opacity={0.65}
+          />
+          <Path
+            d="M188 183Q199 177 210 182M253 182Q265 176 276 182"
+            fill="none"
+            stroke={C.ink}
+            strokeWidth="3.5"
+            strokeLinecap="round"
+          />
+          <Path
+            d="M190 196Q200 185 210 196M253 196Q264 185 274 196"
+            fill="none"
+            stroke={C.ink}
+            strokeWidth="4.5"
+            strokeLinecap="round"
+          />
+          <Path
+            d="M230 196L225 210Q230 214 237 210"
+            fill="none"
+            stroke={SKIN_SHADE}
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <Ellipse
+            cx="188"
+            cy="211"
+            rx="11"
+            ry="5"
+            fill={C.red}
+            opacity={0.6}
+          />
+          <Ellipse
+            cx="275"
+            cy="211"
+            rx="11"
+            ry="5"
+            fill={C.red}
+            opacity={0.6}
+          />
+          <Path
+            d="M209 219Q231 231 255 218C252 250 215 251 209 219Z"
+            fill={C.ink}
+          />
+          <Path
+            d="M215 223Q231 230 249 222L247 229Q230 235 218 229Z"
+            fill={C.panel}
+          />
+          <Path d="M221 241Q234 229 246 239Q234 247 221 241Z" fill={C.red} />
         </G>
+
+        <G transform="rotate(-8 230 126)">
+          <Rect
+            x="107"
+            y="88"
+            width="252"
+            height="94"
+            rx="21"
+            fill={C.ink}
+            opacity={0.12}
+          />
+          <Rect x="104" y="79" width="252" height="94" rx="21" fill={C.ink} />
+          <Rect
+            x="111"
+            y="86"
+            width="238"
+            height="80"
+            rx="15"
+            fill={C.yellow}
+          />
+          <Path
+            d="M127 89H310L236 163H127Q114 163 114 150V102Q114 89 127 89Z"
+            fill={C.panel}
+            opacity={0.16}
+          />
+          <Rect x="117" y="114" width="4" height="24" rx="2" fill={C.ink} />
+          <Circle cx="340" cy="126" r="3.5" fill={C.ink} />
+          <Text
+            x="232"
+            y="143"
+            textAnchor="middle"
+            fill={C.ink}
+            fontFamily={FONT.black}
+            fontSize={Math.min(43, 350 / Math.max(word.length, 1))}
+            letterSpacing="1"
+          >
+            {word}
+          </Text>
+          {/* Fingers overlap the case so the phone is visibly held. */}
+          <Path
+            d="M105 121C97 118 91 124 94 134L101 160C104 170 114 169 119 161L124 151C127 143 119 138 114 145L110 151L109 130Q109 123 105 121Z"
+            fill={SKIN}
+            stroke={C.ink}
+            strokeWidth="3"
+            strokeLinejoin="round"
+          />
+          <Path
+            d="M101 131L105 143M103 148L107 156"
+            fill="none"
+            stroke={SKIN_SHADE}
+            strokeWidth="2.5"
+            strokeLinecap="round"
+          />
+          <G transform="translate(460 0) scale(-1 1)">
+            <Path
+              d="M105 121C97 118 91 124 94 134L101 160C104 170 114 169 119 161L124 151C127 143 119 138 114 145L110 151L109 130Q109 123 105 121Z"
+              fill={SKIN}
+              stroke={C.ink}
+              strokeWidth="3"
+              strokeLinejoin="round"
+            />
+            <Path
+              d="M101 131L105 143M103 148L107 156"
+              fill="none"
+              stroke={SKIN_SHADE}
+              strokeWidth="2.5"
+              strokeLinecap="round"
+            />
+          </G>
+        </G>
+
+        {/* Four quiet confetti colors frame the character. */}
         <Path
-          d="M49 113 l5 -17 l6 17 l17 5 l-17 6 l-6 17 l-5 -17 l-17 -6Z"
+          d="M53 133L58 148L73 153L58 158L53 173L48 158L33 153L48 148Z"
           fill={C.red}
         />
         <Path
-          d="M391 216 l4 -12 l5 12 l12 4 l-12 4 l-5 12 l-4 -12 l-12 -4Z"
+          d="M393 197L397 209L409 213L397 217L393 229L389 217L377 213L389 209Z"
           fill={C.yellow}
         />
-        <Circle cx="393" cy="64" r="6" fill={C.green} />
-        <Line
-          x1="57"
-          y1="253"
-          x2="67"
-          y2="263"
-          stroke={C.green}
-          strokeWidth="6"
-          strokeLinecap="round"
+        <Rect
+          x="82"
+          y="63"
+          width="8"
+          height="22"
+          rx="3"
+          fill={C.blue}
+          transform="rotate(-28 86 74)"
         />
+        <Rect
+          x="370"
+          y="79"
+          width="8"
+          height="21"
+          rx="3"
+          fill={C.red}
+          transform="rotate(26 374 89)"
+        />
+        <Rect
+          x="73"
+          y="270"
+          width="7"
+          height="18"
+          rx="3"
+          fill={C.green}
+          transform="rotate(-40 76 279)"
+        />
+        <Circle cx="327" cy="43" r="5" fill={C.green} />
+        <Circle cx="113" cy="236" r="4" fill={C.yellow} />
+        <Circle
+          cx="399"
+          cy="111"
+          r="5"
+          fill="none"
+          stroke={C.blue}
+          strokeWidth="3"
+        />
+
+        <G transform="rotate(6 365 285)">
+          <Rect
+            x="298"
+            y="267"
+            width="137"
+            height="43"
+            rx="21.5"
+            fill={C.ink}
+            opacity={0.08}
+          />
+          <Rect
+            x="296"
+            y="262"
+            width="137"
+            height="43"
+            rx="21.5"
+            fill={C.green}
+            stroke={C.panel}
+            strokeWidth="3"
+          />
+          <Path
+            d="M309 283L314 288L323 277"
+            fill="none"
+            stroke={C.ink}
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <Text
+            x="372"
+            y="289"
+            textAnchor="middle"
+            fill={C.ink}
+            fontFamily={FONT.bold}
+            fontSize={Math.min(14, 148 / Math.max(correct.length, 1))}
+          >
+            {correct}
+          </Text>
+        </G>
       </Svg>
-      <View
-        style={{
-          position: "absolute",
-          top: 93,
-          left: "27%",
-          right: "22%",
-          transform: [{ rotate: "-8deg" }],
-        }}
-      >
-        <Txt
-          numberOfLines={1}
-          adjustsFontSizeToFit
-          style={{
-            color: C.ink,
-            fontFamily: FONT.black,
-            fontSize: 35,
-            textAlign: "center",
-          }}
-        >
-          {word}
-        </Txt>
-      </View>
-      <View
-        style={{
-          position: "absolute",
-          bottom: 44,
-          right: 4,
-          paddingHorizontal: 14,
-          paddingVertical: 10,
-          borderRadius: 24,
-          backgroundColor: C.green,
-          transform: [{ rotate: "-5deg" }],
-          shadowColor: "#26344A",
-          shadowOpacity: 0.25,
-          shadowRadius: 12,
-          shadowOffset: { width: 0, height: 8 },
-        }}
-      >
-        <Txt style={{ color: C.ink, fontFamily: FONT.bold, fontSize: 14 }}>
-          ✓ {correct}
-        </Txt>
-      </View>
     </View>
   );
 }

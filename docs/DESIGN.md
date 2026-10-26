@@ -21,6 +21,8 @@ La CTA della home e il marchio sono gialli; la navigazione attiva è verde. Il t
 
 Outfit, pulsanti grandi, schede arrotondate e animazioni brevi mantengono la parentela con Open Taboo. Il tema è in `src/theme.ts`; `accentInk` adatta le etichette e `textOn` sceglie fra blu scuro e bianco in base al contrasto. Rigenerazione asset: `npm run assets`.
 
+L’illustrazione originale della home è disegnata in SVG dentro `src/components/HeroArt.tsx`: ragazzo sorridente, mani che impugnano il telefono sulla fronte, maglietta verde e coriandoli nei quattro colori. Capelli, dita, cuciture, riflesso del display e ombre leggere definiscono la figura. “PIZZA” e il badge tradotto sono parte dello stesso SVG e scalano insieme alla scena, con i font Outfit locali. La proporzione 460:360 mantiene l’allineamento su mobile e desktop. Anteprima: `hero-1280.png`.
+
 L’icona installata riprende il simbolo Lucide ScanFace a sinistra del nome nella home: fondo giallo, tratto blu scuro da 2,4 e inclinazione di −5°. La variante adattiva rientra nell’area sicura Android; anche la favicon riprende lo stesso marchio. La firma “by Gleetch” compare sotto “Open GuessUp”, senza freccia. Il selettore lingua mostra bandiere vettoriali locali per tutte le cinque lingue.
 
 Contrasti misurati: testo/sfondo **12,0:1**, secondario/sfondo **5,3:1**, testo/rosso **5,9:1**, testo/verde **7,8:1**, testo/blu **7,2:1**, testo/giallo **8,9:1**. Bianco su blu, verde e rosso scuri: rispettivamente **6,6:1**, **6,5:1** e **5,7:1**.
