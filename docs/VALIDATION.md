@@ -41,7 +41,7 @@ Il web richiede rete/server per l'avvio a freddo: non c'è un service worker. L'
 
 ## Screenshot
 
-La galleria pubblica contiene soltanto home e gioco, in due PNG portrait 780 × 1688. La home è catturata dalla UI web a 390 × 844 e densità 2. Il gioco è catturato realmente a 844 × 390 e inserito in una presentazione verticale con didascalia che ne esplicita l’orientamento landscape. `node scripts/screenshots.mjs` genera entrambi i file in `docs/screenshots/`, verificando errori JavaScript e overflow. Le catture tecniche sottostanti documentano le altre schermate e l’orientamento effettivo del gioco.
+La galleria pubblica contiene soltanto home e gioco, in due PNG portrait 860 × 1864 interamente in inglese. La home è catturata dalla UI web a 430 × 932 e densità 2, aspettando il completamento della dissolvenza iniziale. Il gioco è catturato realmente a 844 × 390, con parole e controlli in inglese, e inserito in una presentazione verticale con didascalie inglesi che ne esplicitano l’orientamento landscape. `node scripts/screenshots.mjs` genera entrambi i file in `docs/screenshots/`, verificando errori JavaScript e overflow. Le catture tecniche sottostanti documentano le altre schermate e l’orientamento effettivo del gioco.
 
 | Schermata                         | File                                                    |
 | --------------------------------- | ------------------------------------------------------- |

@@ -9,14 +9,14 @@ const browser = await chromium.launch({
     "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
 });
 const page = await browser.newPage({
-  viewport: { width: 390, height: 844 },
+  viewport: { width: 430, height: 932 },
   deviceScaleFactor: 2,
-  locale: "it-IT",
+  locale: "en-GB",
 });
 const errors = [];
 page.on("pageerror", (error) => errors.push(error.message));
 await page.addInitScript(() =>
-  localStorage.setItem("@open-guess/language-v1", "it"),
+  localStorage.setItem("@open-guess/language-v1", "en"),
 );
 const button = (name) =>
   page.getByRole("button", { name, exact: true }).first();
@@ -51,21 +51,29 @@ try {
         requestAnimationFrame(() => requestAnimationFrame(resolve)),
       ),
   );
-  await page.screenshot({ path: "docs/screenshots/home-portrait-it.png" });
+  await page.getByText("You can't see it.", { exact: false }).first().waitFor();
+  await page
+    .getByRole("button", { name: "New game", exact: true })
+    .first()
+    .waitFor();
+  await page.screenshot({ path: "docs/screenshots/home-portrait-en.png" });
   assert.deepEqual(errors, []);
 
   if (process.argv.includes("--home-only")) {
     console.log("Home captured at full opacity after the entrance animation.");
   } else {
-    await button("Nuova partita").click();
-    await button("Andiamo!").click();
+    await button("New game").click();
+    await button("Let's go!").click();
     await page.setViewportSize({ width: 844, height: 390 });
-    await button("Andiamo! · 60s").click();
+    await button("Let's go! · 60s").click();
     await page.getByTestId("current-word").waitFor();
     for (const key of ["ArrowDown", "ArrowUp", "ArrowDown"]) {
       await page.keyboard.press(key);
       await page.waitForTimeout(720);
     }
+    await page.getByText("Animals", { exact: false }).first().waitFor();
+    await page.getByRole("button", { name: /^↑ Skip/ }).waitFor();
+    await page.getByRole("button", { name: /^↓ Got it!/ }).waitFor();
     assert.ok(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -84,13 +92,13 @@ try {
       readFile("assets/icon.png"),
     ]);
     const presentation = await browser.newPage({
-      viewport: { width: 390, height: 844 },
+      viewport: { width: 430, height: 932 },
       deviceScaleFactor: 2,
     });
-    await presentation.setContent(`<!doctype html><html lang="it"><head><style>
+    await presentation.setContent(`<!doctype html><html lang="en"><head><style>
     @font-face{font-family:Outfit;src:url('${data(regular, "font/ttf")}')}
     @font-face{font-family:Outfit;src:url('${data(font, "font/ttf")}');font-weight:900}
-    *{box-sizing:border-box}body{margin:0;width:390px;height:844px;background:#F7FAFF;color:#26344A;font-family:Outfit;display:flex;flex-direction:column;align-items:center;padding:40px 16px}
+    *{box-sizing:border-box}body{margin:0;width:430px;height:932px;background:#F7FAFF;color:#26344A;font-family:Outfit;display:flex;flex-direction:column;align-items:center;padding:40px 16px}
     .brand{display:flex;align-items:center;gap:10px;align-self:flex-start;margin-left:10px}.brand img{width:44px;height:44px;border-radius:13px}.brand strong{font-size:23px;font-weight:900}.brand small{display:block;font-size:11px;color:#5D6979}
     .eyebrow{font-size:10px;letter-spacing:1.8px;color:#285E9B;margin:53px 0 14px}
     h1{font-size:44px;line-height:1.04;letter-spacing:-1.4px;font-weight:900;text-align:center;margin:0 0 40px}
@@ -100,12 +108,12 @@ try {
     .note{font-size:15px;line-height:23px;text-align:center;color:#5D6979;margin:30px 0 0}
   </style></head><body>
     <div class="brand"><img alt="" src="${data(icon, "image/png")}"><div><strong>Open GuessUp</strong><small>by Gleetch</small></div></div>
-    <div class="eyebrow">IL TURNO, VISTO DAGLI AMICI</div>
-    <h1>Quanto riesci<br>a indovinare?</h1>
-    <div class="phone"><img alt="Schermata reale del turno" src="${data(game, "image/png")}"></div>
-    <div class="caption">Schermata del turno in orizzontale</div>
-    <div class="controls"><div class="control green"><b>↓ +1</b>Indovinata</div><div class="control red"><b>↑</b>Passa</div></div>
-    <p class="note">Telefono in orizzontale.<br>Schermo verso gli amici.</p>
+    <div class="eyebrow">YOUR TURN, AS FRIENDS SEE IT</div>
+    <h1>How many can<br>you guess?</h1>
+    <div class="phone"><img alt="Actual gameplay screen" src="${data(game, "image/png")}"></div>
+    <div class="caption">Gameplay in landscape</div>
+    <div class="controls"><div class="control green"><b>↓ +1</b>Got it!</div><div class="control red"><b>↑</b>Skip</div></div>
+    <p class="note">Hold the phone horizontally.<br>Screen facing your friends.</p>
   </body></html>`);
     await presentation.evaluate(async () => {
       await document.fonts.ready;
@@ -119,10 +127,10 @@ try {
       ),
     );
     await presentation.screenshot({
-      path: "docs/screenshots/game-portrait-it.png",
+      path: "docs/screenshots/game-portrait-en.png",
     });
     console.log(
-      "Home + real landscape game presented in portrait: two 780×1688 images.",
+      "English home + real landscape game presented in portrait: two 860×1864 images.",
     );
   }
 } finally {
