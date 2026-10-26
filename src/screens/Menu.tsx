@@ -196,7 +196,7 @@ export function Home({
             marginTop: mobile ? 12 : 0,
           }}
         >
-          <HeroArt correct={t("Indovinata")} />
+          <HeroArt />
         </View>
       </View>
       <View

@@ -10,7 +10,7 @@
     "icon": "./assets/icon.png",
     "android": {
       "package": "it.gleetch.openguess",
-      "versionCode": 16,
+      "versionCode": 17,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#F4D875"

@@ -19,9 +19,9 @@ La card “La tua prossima ossessione?” usa azzurro chiaro `#E1EEFC` (premuta 
 
 La CTA della home e il marchio sono gialli; la navigazione attiva è verde. Il titolo in evidenza e gli altri pulsanti usano il blu scuro. Le categorie distribuiscono i quattro colori, con icone e testi scuri coordinati. Corretto e passaggio si distinguono anche per testo e icone.
 
-Outfit, pulsanti grandi, schede arrotondate e animazioni brevi mantengono la parentela con Open Taboo. Il tema è in `src/theme.ts`; `accentInk` adatta le etichette e `textOn` sceglie fra blu scuro e bianco in base al contrasto. Rigenerazione asset: `npm run assets`.
+Outfit, pulsanti grandi, schede arrotondate e animazioni brevi mantengono la parentela con Open Taboo. Il tema è in `src/theme.ts`; `accentInk` adatta le etichette e `textOn` sceglie fra blu scuro e bianco in base al contrasto. Rigenerazione icone e suoni: `npm run assets`.
 
-L’illustrazione originale della home è disegnata in SVG dentro `src/components/HeroArt.tsx`: ragazzo sorridente, mani che impugnano il telefono sulla fronte, maglietta verde e coriandoli nei quattro colori. Capelli, dita, cuciture, riflesso del display e ombre leggere definiscono la figura. “PIZZA” e il badge tradotto sono parte dello stesso SVG e scalano insieme alla scena, con i font Outfit locali. La proporzione 460:360 mantiene l’allineamento su mobile e desktop. Anteprima: `hero-1280.png`.
+Il ragazzo è sostituito da una composizione 3D morbida: telefono giallo con “PIZZA”, tre carte rosse, verdi e blu, coriandoli e gettoni corretto/passaggio. L’asset originale `assets/hero-party.png` è generato con imagegen integrato: PNG RGBA 1448 × 1086 con sfondo trasparente, incluso localmente e visualizzato con proporzione 4:3 da `src/components/HeroArt.tsx`. È decorativo; il testo adiacente descrive già il gioco agli screen reader. Prompt e provenienza in `HERO_ART.md`; anteprima nella home in `home-desktop-it.png`.
 
 L’icona installata riprende il simbolo Lucide ScanFace a sinistra del nome nella home: fondo giallo, tratto blu scuro da 2,4 e inclinazione di −5°. La variante adattiva rientra nell’area sicura Android; anche la favicon riprende lo stesso marchio. La firma “by Gleetch” compare sotto “Open GuessUp”, senza freccia. Il selettore lingua mostra bandiere vettoriali locali per tutte le cinque lingue.
 

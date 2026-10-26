@@ -1,6 +1,7 @@
 # Crediti e licenze
 
-- Open GuessUp: codice e illustrazione originale per il progetto dell'utente; stile e parte del lessico originale derivano dal suo Open Taboo (Gleetch, MIT).
+- Open GuessUp: codice originale per il progetto dell'utente; stile e parte del lessico originale derivano dal suo Open Taboo (Gleetch, MIT).
+- Illustrazione della home `assets/hero-party.png`: asset originale generato con lo strumento imagegen integrato, senza immagini sorgente esterne. Prompt e provenienza in `docs/HERO_ART.md`.
 - Outfit: font locale dal pacchetto `@expo-google-fonts/outfit`, SIL Open Font License 1.1 (licenza inclusa nel pacchetto).
 - Lucide: icone `lucide-react-native`, ISC. Anche l'icona dell'app riprende il simbolo ScanFace usato nella home.
 - Expo e React Native: MIT; React: MIT.

@@ -11,7 +11,7 @@ Party game offline per Android: un telefono sulla fronte, gli amici danno gli in
 - Palette rosso, verde, blu e giallo pastello su bianco freddo, con testo blu scuro.
 - Icona installata uguale al simbolo della home: ScanFace blu scuro su fondo giallo, anche nella variante adattiva Android.
 - Marchio senza freccia e card di scoperta categorie in azzurro chiaro, distinta dai colori pieni dei mazzi.
-- Illustrazione originale della home ridisegnata, con mani che impugnano il telefono, volto espressivo e scritta “PIZZA” allineata su ogni dimensione.
+- Nuova illustrazione originale 3D nella home: telefono con “PIZZA”, carte e gettoni nei colori pastello, inclusa offline nell’app.
 
 ## Installazione
 
