@@ -105,7 +105,7 @@ export function IconButton({
 }
 export function Pill({
   children,
-  color = C.raspberry,
+  color = C.danger,
 }: {
   children: React.ReactNode;
   color?: string;
@@ -158,7 +158,7 @@ export function Heading({
 }) {
   return (
     <View style={{ gap: 10, marginBottom: 24 }}>
-      {eyebrow && <Label color={C.apricot}>{eyebrow}</Label>}
+      {eyebrow && <Label color={C.yellow}>{eyebrow}</Label>}
       <Txt
         accessibilityRole="header"
         style={{

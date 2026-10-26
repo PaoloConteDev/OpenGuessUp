@@ -19,7 +19,7 @@ http
       if (url.pathname === "/__mobile") {
         res.setHeader("Content-Type", "text/html");
         res.end(
-          '<html><body style="margin:0;background:#E4F3EC;display:grid;place-items:center;height:100vh"><iframe title="Open GuessUp mobile" src="/?lang=it" style="height:844px;max-height:96vh;width:390px;border:1px solid #DDDCD2;border-radius:28px"></iframe></body></html>',
+          '<html><body style="margin:0;background:#E9F2FC;display:grid;place-items:center;height:100vh"><iframe title="Open GuessUp mobile" src="/?lang=it" style="height:844px;max-height:96vh;width:390px;border:1px solid #D8E1EC;border-radius:28px"></iframe></body></html>',
         );
         return;
       }

@@ -1,6 +1,6 @@
 # Open GuessUp
 
-**Tu non vedi. Loro ridono.** Un party game offline per Android e web, con un solo telefono, realizzato con Expo SDK 58, React Native e TypeScript. Progetto indipendente di Gleetch. Identità Confetti: crema, menta e albicocca, con piccoli accenti lampone, con Outfit, logo e icona originali. [Note di design](docs/DESIGN.md).
+**Tu non vedi. Loro ridono.** Un party game offline per Android e web, con un solo telefono, realizzato con Expo SDK 58, React Native e TypeScript. Progetto indipendente di Gleetch. Identità Confetti: rosso, verde, blu e giallo pastello su bianco freddo, con Outfit, logo e icona originali. [Note di design](docs/DESIGN.md).
 
 ![Home](docs/home-desktop-it.png)
 ![Turno landscape](docs/turn-landscape-it.png)

@@ -92,7 +92,7 @@ export function Match({
   const wordSize =
     Math.min(height * 0.23, width * 0.105, 112) *
     Math.min(1, Math.sqrt(16 / Math.max(1, game.current.text.length)));
-  const color = TEAM_COLORS[teamIndex(game)] ?? C.apricot;
+  const color = TEAM_COLORS[teamIndex(game)] ?? C.yellow;
   const a = useRef(new Animated.Value(1)).current;
   useEffect(() => {
     a.setValue(0.95);
@@ -163,10 +163,10 @@ export function Match({
             <View
               style={{
                 padding: 25,
-                backgroundColor: "#FFB05A14",
+                backgroundColor: "#F4D87514",
                 borderRadius: 60,
                 borderWidth: 1,
-                borderColor: "#FFB05A35",
+                borderColor: "#F4D87535",
               }}
             >
               <Trophy size={55} color={C.text} />
@@ -202,7 +202,7 @@ export function Match({
                 flexDirection: "row",
                 alignItems: "center",
                 borderColor:
-                  team.score === ranked[0]!.score ? C.apricot : C.line,
+                  team.score === ranked[0]!.score ? C.yellow : C.line,
               }}
             >
               <Txt
@@ -362,8 +362,8 @@ export function Match({
             borderRadius: 24,
             backgroundColor: feedback
               ? game.entries.at(-1)?.outcome === "correct"
-                ? C.mint
-                : C.rose
+                ? C.green
+                : C.red
               : C.panel,
             alignItems: "center",
             justifyContent: "center",
@@ -421,7 +421,7 @@ export function Match({
         <View style={{ flexDirection: "row", gap: 14 }}>
           <Button
             title={`↑ ${t("Passa")} ${skipsLeft(game) === Infinity ? "∞" : skipsLeft(game)}`}
-            color={C.rose}
+            color={C.red}
             icon={SkipForward}
             disabled={feedback || skipsLeft(game) === 0}
             onPress={() => onAnswer("skip")}
@@ -429,7 +429,7 @@ export function Match({
           />
           <Button
             title={`↓ ${t("Indovinata")} +1`}
-            color={C.mint}
+            color={C.green}
             icon={Check}
             disabled={feedback}
             onPress={() => onAnswer("correct")}
@@ -627,7 +627,7 @@ export function Match({
                   ? "Posizione calibrata"
                   : "Calibra posizione neutra",
               )}
-              color={C.mint}
+              color={C.green}
               icon={RotateCcw}
               disabled={tilt.calibrating}
               onPress={tilt.calibrate}

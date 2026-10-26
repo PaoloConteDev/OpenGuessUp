@@ -149,7 +149,7 @@ export function Home({
           >
             <Button
               title={t("Nuova partita")}
-              color={C.apricot}
+              color={C.yellow}
               icon={Play}
               onPress={() => onStart()}
             />
@@ -260,8 +260,8 @@ export function Home({
         </Txt>
         <View style={{ flexDirection: mobile ? "column" : "row", gap: 16 }}>
           {[
-            [Zap, "Rapida", "Un turno, tutti contro il timer.", C.apricot],
-            [Users, "A squadre", "2–4 squadre. Una fronte alla volta.", C.mint],
+            [Zap, "Rapida", "Un turno, tutti contro il timer.", C.yellow],
+            [Users, "A squadre", "2–4 squadre. Una fronte alla volta.", C.green],
           ].map(([I, title, sub, color], i) => {
             const Icon = I as typeof Users;
             return (
@@ -297,7 +297,7 @@ export function Home({
         style={({ pressed }) => ({
           padding: 25,
           borderRadius: 24,
-          backgroundColor: pressed ? C.lilacPressed : C.lilac,
+          backgroundColor: pressed ? C.discoveryPressed : C.discovery,
           borderWidth: 1,
           borderColor: C.ink + "20",
           gap: 10,
@@ -313,7 +313,7 @@ export function Home({
             <View
               key={i}
               style={{
-                backgroundColor: [C.mint, C.apricot, C.rose, C.peach][i],
+                backgroundColor: [C.green, C.yellow, C.red, C.blue][i],
                 padding: 13,
                 borderRadius: 14,
                 transform: [{ rotate: `${i % 2 ? 8 : -8}deg` }],
@@ -456,7 +456,7 @@ export function Decks({
                       <View
                         style={{
                           height: 90,
-                          backgroundColor: cat.color + "12",
+                          backgroundColor: cat.color + "30",
                           justifyContent: "center",
                           alignItems: "flex-start",
                           paddingLeft: 19,
@@ -469,7 +469,7 @@ export function Decks({
                             width: 54,
                             height: 54,
                             borderRadius: 18,
-                            backgroundColor: cat.color + "22",
+                            backgroundColor: cat.color,
                             justifyContent: "center",
                             alignItems: "center",
                             transform: [{ rotate: "-4deg" }],
@@ -610,7 +610,7 @@ function DeckEditor({
 }) {
   const { t, language } = useI18n();
   const [name, setName] = useState(deck?.name ?? "");
-  const [color, setColor] = useState(deck?.color ?? C.rose);
+  const [color, setColor] = useState(deck?.color ?? C.red);
   const [text, setText] = useState(
     deck?.words.map((w) => w.text).join("\n") ?? "",
   );
@@ -622,7 +622,7 @@ function DeckEditor({
       <View
         style={{
           flex: 1,
-          backgroundColor: "#422339E8",
+          backgroundColor: "#26344AE8",
           padding: 16,
           alignItems: "center",
           justifyContent: "center",
@@ -675,7 +675,7 @@ function DeckEditor({
             />
             <Label>{t("Colore del mazzo")}</Label>
             <View style={{ flexDirection: "row", gap: 12 }}>
-              {[C.rose, C.apricot, C.mint, C.peach].map((c, i) => (
+              {[C.red, C.yellow, C.green, C.blue].map((c, i) => (
                 <Pressable
                   key={c}
                   accessibilityRole="radio"
@@ -784,7 +784,7 @@ export function Toggle({
         accessibilityLabel={title}
         value={value}
         onValueChange={onChange}
-        trackColor={{ false: C.line, true: C.mint }}
+        trackColor={{ false: C.line, true: C.green }}
         thumbColor={value ? C.text : C.muted}
       />
     </View>
@@ -937,7 +937,7 @@ export function Setup({
             />
           </Panel>
           <Panel
-            style={{ borderColor: "#FFB05A55", backgroundColor: "#FFB05A0D" }}
+            style={{ borderColor: "#F4D87555", backgroundColor: "#F4D8750D" }}
           >
             <Label color={C.primary}>{t("TUTTO PRONTO?")}</Label>
             <Txt style={{ fontFamily: FONT.bold, fontSize: 28 }}>
@@ -982,7 +982,7 @@ export function Rules({ onStart }: { onStart: () => void }) {
           "Giù: +1. Su: passa. Ritorna al centro. Alla fine correggete gli esiti insieme e confermate. Vince chi ha più punti; il pareggio si festeggia insieme.",
         ].map((key, i) => (
           <Panel key={key}>
-            <Label color={[C.rose, C.apricot, C.mint, C.peach][i]}>
+            <Label color={[C.red, C.yellow, C.green, C.blue][i]}>
               0{i + 1}
             </Label>
             <Txt style={{ lineHeight: 26 }}>{t(key)}</Txt>

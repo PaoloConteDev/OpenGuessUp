@@ -1,3 +1,4 @@
+import { C } from "../theme";
 import content from "./content.json";
 import type { Language } from "../i18n";
 import type { Word } from "../game/engine";
@@ -16,7 +17,7 @@ export const CATEGORY_ROWS = [
     "Pfoten, Flügel und Flossen.",
     "Pattes, ailes et nageoires.",
     "Mimica",
-    "#9AD7C7",
+    C.green,
     "PawPrint",
   ],
   [
@@ -32,7 +33,7 @@ export const CATEGORY_ROWS = [
     "Eine köstliche Weltreise.",
     "Un voyage gourmand.",
     "Descrizione",
-    "#FFB05A",
+    C.yellow,
     "Utensils",
   ],
   [
@@ -48,7 +49,7 @@ export const CATEGORY_ROWS = [
     "Direkt vor dir. Wie heißen sie?",
     "Juste devant toi. Comment ça s’appelle ?",
     "Descrizione",
-    "#9AD7C7",
+    C.blue,
     "Lamp",
   ],
   [
@@ -64,7 +65,7 @@ export const CATEGORY_ROWS = [
     "Die Welt, ganz ohne Koffer.",
     "Le monde, sans faire sa valise.",
     "Descrizione",
-    "#FFB05A",
+    C.red,
     "Compass",
   ],
   [
@@ -80,7 +81,7 @@ export const CATEGORY_ROWS = [
     "Von der Wiese zu den Sternen.",
     "De la prairie aux étoiles.",
     "Descrizione",
-    "#9AD7C7",
+    C.green,
     "Leaf",
   ],
   [
@@ -96,7 +97,7 @@ export const CATEGORY_ROWS = [
     "Begriffe und Erfindungen zum Nachdenken.",
     "Concepts et inventions : à toi de réfléchir.",
     "Descrizione",
-    "#9AD7C7",
+    C.blue,
     "Lightbulb",
   ],
   [
@@ -112,7 +113,7 @@ export const CATEGORY_ROWS = [
     "Sport und Aufgaben. Heute keine Bank.",
     "Disciplines et défis. Pas de banc.",
     "Mimica",
-    "#FFB05A",
+    C.yellow,
     "Trophy",
   ],
   [
@@ -128,7 +129,7 @@ export const CATEGORY_ROWS = [
     "Singe ein Lied oder imitiere das Instrument.",
     "Chante un air ou imite l’instrument.",
     "Canto",
-    "#AF2F63",
+    C.red,
     "Music",
   ],
   [
@@ -144,7 +145,7 @@ export const CATEGORY_ROWS = [
     "Kleine Taten, großes Gelächter.",
     "Petits exploits, grands fous rires.",
     "Mimica",
-    "#9AD7C7",
+    C.blue,
     "Drama",
   ],
   [
@@ -160,7 +161,7 @@ export const CATEGORY_ROWS = [
     "Der lustigste Job des Abends.",
     "Le métier le plus drôle de la soirée.",
     "Imitazione",
-    "#FFB05A",
+    C.yellow,
     "Briefcase",
   ],
   [
@@ -176,7 +177,7 @@ export const CATEGORY_ROWS = [
     "Fantastische Wesen, alltägliche Probleme.",
     "Créatures fantastiques, soucis ordinaires.",
     "Imitazione",
-    "#9AD7C7",
+    C.green,
     "WandSparkles",
   ],
   [
@@ -192,7 +193,7 @@ export const CATEGORY_ROWS = [
     "Ein Gesicht sagt mehr als tausend Worte.",
     "Un visage vaut mille mots.",
     "Imitazione",
-    "#FFB05A",
+    C.red,
     "Smile",
   ],
   [
@@ -208,7 +209,7 @@ export const CATEGORY_ROWS = [
     "Abreisen, Postkarten und Umwege.",
     "Départs, cartes postales et détours.",
     "Indizi liberi",
-    "#FFB05A",
+    C.blue,
     "Plane",
   ],
 ] as const;

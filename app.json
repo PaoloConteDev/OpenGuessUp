@@ -6,14 +6,14 @@
     "version": "1.0.0",
     "orientation": "default",
     "userInterfaceStyle": "light",
-    "backgroundColor": "#FFF9F0",
+    "backgroundColor": "#F7FAFF",
     "icon": "./assets/icon.png",
     "android": {
       "package": "it.gleetch.openguess",
-      "versionCode": 14,
+      "versionCode": 15,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFB05A"
+        "backgroundColor": "#F4D875"
       },
       "blockedPermissions": [
         "android.permission.SYSTEM_ALERT_WINDOW",

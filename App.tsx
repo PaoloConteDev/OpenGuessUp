@@ -371,7 +371,7 @@ function Main() {
               >
                 <View
                   style={{
-                    backgroundColor: C.apricot,
+                    backgroundColor: C.yellow,
                     paddingHorizontal: 11,
                     paddingVertical: 7,
                     borderRadius: 14,
@@ -506,7 +506,7 @@ function Main() {
                           leading={<LanguageFlag language={l.id} size={28} />}
                           icon={l.id === language ? Check : null}
                           style={{ justifyContent: "flex-start" }}
-                          color={l.id === language ? C.primary : C.mint}
+                          color={l.id === language ? C.primary : C.green}
                           secondary={l.id !== language}
                           onPress={() => changeLanguage(l.id)}
                         />
@@ -627,7 +627,7 @@ function Main() {
                     borderRadius: 17,
                     backgroundColor:
                       active || (screen === "home" && to === "setup")
-                        ? C.mint
+                        ? C.green
                         : "transparent",
                   }}
                 >

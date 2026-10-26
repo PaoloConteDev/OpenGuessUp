@@ -29,7 +29,7 @@ export function HeroArt({
           width="9"
           height="24"
           rx="3"
-          fill={C.mint}
+          fill={C.blue}
           transform="rotate(-26 70 55)"
         />
         <Rect
@@ -38,11 +38,11 @@ export function HeroArt({
           width="8"
           height="22"
           rx="3"
-          fill={C.mint}
+          fill={C.red}
           transform="rotate(31 369 133)"
         />
-        <Circle cx="116" cy="283" r="5" fill={C.apricot} />
-        <Circle cx="333" cy="37" r="4" fill={C.mint} />
+        <Circle cx="116" cy="283" r="5" fill={C.yellow} />
+        <Circle cx="333" cy="37" r="4" fill={C.blue} />
         <Circle
           cx="230"
           cy="170"
@@ -59,7 +59,7 @@ export function HeroArt({
           fill={C.primary}
           opacity="0.13"
         />
-        <Path d="M120 322 Q128 237 230 240 Q331 238 341 322" fill={C.mint} />
+        <Path d="M120 322 Q128 237 230 240 Q331 238 341 322" fill={C.green} />
         <Path
           d="M196 245 L196 220 L266 220 L266 245 Q235 283 196 245"
           fill="#F2A77F"
@@ -82,7 +82,7 @@ export function HeroArt({
         <Path
           d="M219 219 Q234 226 246 218"
           fill="none"
-          stroke={C.rose}
+          stroke={C.red}
           strokeWidth="7"
           strokeLinecap="round"
         />
@@ -102,7 +102,7 @@ export function HeroArt({
             width="251"
             height="97"
             rx="15"
-            fill={C.apricot}
+            fill={C.yellow}
           />
           <Rect x="112" y="100" width="5" height="38" rx="3" fill={C.ink} />
           <Circle cx="346" cy="121" r="4" fill={C.ink} />
@@ -115,19 +115,19 @@ export function HeroArt({
         </G>
         <Path
           d="M49 113 l5 -17 l6 17 l17 5 l-17 6 l-6 17 l-5 -17 l-17 -6Z"
-          fill={C.rose}
+          fill={C.red}
         />
         <Path
           d="M391 216 l4 -12 l5 12 l12 4 l-12 4 l-5 12 l-4 -12 l-12 -4Z"
-          fill={C.apricot}
+          fill={C.yellow}
         />
-        <Circle cx="393" cy="64" r="6" fill={C.mint} />
+        <Circle cx="393" cy="64" r="6" fill={C.green} />
         <Line
           x1="57"
           y1="253"
           x2="67"
           y2="263"
-          stroke={C.mint}
+          stroke={C.green}
           strokeWidth="6"
           strokeLinecap="round"
         />
@@ -162,9 +162,9 @@ export function HeroArt({
           paddingHorizontal: 14,
           paddingVertical: 10,
           borderRadius: 24,
-          backgroundColor: C.mint,
+          backgroundColor: C.green,
           transform: [{ rotate: "-5deg" }],
-          shadowColor: "#422339",
+          shadowColor: "#26344A",
           shadowOpacity: 0.25,
           shadowRadius: 12,
           shadowOffset: { width: 0, height: 8 },
