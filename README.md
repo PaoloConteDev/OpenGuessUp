@@ -1,40 +1,40 @@
 # Open GuessUp
 
-**Versione 1.1.0 · by Gleetch**
+**Version 1.1.0 · by Gleetch**
 
-**Tu non vedi. Loro ridono.** Un party game offline per Android e web, con un solo telefono, realizzato con Expo SDK 58, React Native e TypeScript. Progetto indipendente di Gleetch. Identità Confetti: rosso, verde, blu e giallo pastello su bianco freddo, con Outfit, logo e icona originali. [Note di design](docs/DESIGN.md).
+**You can't see it. They can't stop laughing.** An offline party game for Android and web, played with a single phone. Built with Expo SDK 58, React Native and TypeScript. An independent Gleetch project with the Confetti palette: pastel red, green, blue and yellow on a cool white background, Outfit typography, and original branding and artwork. [Design notes](docs/DESIGN.md).
 
-[**Scarica l’APK Android 1.1.0**](https://github.com/PaoloConteDev/OpenGuessUp/releases/download/v1.1.0/OpenGuessUp-1.1.0-arm64.apk) · [Release e sorgenti](https://github.com/PaoloConteDev/OpenGuessUp/releases/tag/v1.1.0)
+[**Download the Android APK 1.1.0**](https://github.com/PaoloConteDev/OpenGuessUp/releases/download/v1.1.0/OpenGuessUp-1.1.0-arm64.apk) · [Release and source code](https://github.com/PaoloConteDev/OpenGuessUp/releases/tag/v1.1.0)
 
-- Una partita rapida oppure 2–4 squadre, con nomi e durata personalizzabili.
-- 12 categorie, 3.600 voci per lingua e mazzi personali modificabili.
-- Italiano, inglese, spagnolo, francese e tedesco.
-- Inclinazione su Android; pulsanti e tastiera per giocare anche sul web.
-- Nessun account, pubblicità, acquisto, tracking o backend necessario.
+- Quick play or 2–4 teams, with custom names and turn duration.
+- 12 categories, 3,600 entries per language and editable custom decks.
+- Italian, English, Spanish, French and German.
+- Tilt controls on Android; buttons and keyboard controls on the web.
+- No account, ads, purchases, tracking or backend required.
 
 <p align="center">
-  <img src="docs/screenshots/home-portrait-it.png" width="200" alt="Home in formato portrait" />
-  <img src="docs/screenshots/game-portrait-it.png" width="200" alt="Anteprima portrait della schermata reale di gioco in landscape" />
+  <img src="docs/screenshots/home-portrait-it.png" width="200" alt="Home screen in portrait orientation" />
+  <img src="docs/screenshots/game-portrait-it.png" width="200" alt="Portrait presentation of an actual landscape gameplay screen" />
 </p>
 
-Home e schermata reale di gioco, presentate in formato portrait. Il turno si gioca in landscape, come mostrato nella seconda anteprima.
+The home screen and actual gameplay, presented in portrait format. Turns are played in landscape, as shown in the second preview. The screenshots show the Italian interface.
 
-## Installare e aggiornare
+## Install and update
 
-Scarica l’APK su un telefono Android **ARM64 con Android 7 o successivo**, aprilo e consenti l’installazione dalla fonte scelta. L’app funziona senza Expo Go; dati, font, illustrazione e suoni sono inclusi per giocare offline dal primo avvio.
+Download the APK on an **ARM64 phone running Android 7 or later**, open it and allow installation from your chosen source. Expo Go is not required. Content, fonts, artwork and sounds are bundled so you can play offline from the first launch.
 
-Se hai già installato la 1.0.0 di questa repository, apri il nuovo APK per aggiornarla conservando impostazioni, mazzi e partita salvata. La 1.1.0 mantiene package e certificato di firma; non serve disinstallare. Il file resta una build autonoma firmata con chiave debug, destinata a test e installazione diretta. I digest SHA-256 sono disponibili in `SHA256SUMS.txt` negli allegati della release.
+If you already installed version 1.0.0 from this repository, install the new APK over it to keep your settings, decks and saved game. Version 1.1.0 uses the same package and signing certificate, so uninstalling is unnecessary. This is a standalone debug-signed build intended for testing and direct installation. SHA-256 checksums are available in the release attachment `SHA256SUMS.txt`.
 
-## Novità della 1.1.0
+## What's included in 1.1.0
 
-- Identità Confetti a quattro colori pastello e illustrazione 3D originale nella home.
-- Icona Android coordinata al simbolo della home, bandiere delle lingue e firma “by Gleetch”.
-- Numero di versione aggiornato in tutta l’interfaccia, letto dalla configurazione dell’app.
-- README con download, regole, configurazione e istruzioni di compilazione.
+- The four-color pastel Confetti identity and original 3D home artwork.
+- An Android icon matching the home symbol, language flags and the “by Gleetch” signature.
+- A consistent version number throughout the interface, read from the app configuration.
+- Documentation covering downloads, rules, setup and build instructions.
 
-## Avvio
+## Getting started
 
-Richiede Node 22.13+ (qui verificato con 22.14), npm e, per il nativo, un client compatibile con Expo SDK 58 o un APK.
+Requires Node 22.13+ (verified with 22.14) and npm. Native development also requires an Expo SDK 58-compatible client or an APK.
 
 ```powershell
 git clone https://github.com/PaoloConteDev/OpenGuessUp.git
@@ -43,94 +43,98 @@ npm.cmd ci
 npm.cmd start
 ```
 
-`npm run web` avvia l'anteprima web in sviluppo. Per l'export di produzione:
+`npm run web` starts the development web preview. To export and serve a production build:
 
 ```powershell
 npm.cmd run export:web
 npm.cmd run preview
 ```
 
-Apri [127.0.0.1:4174](http://127.0.0.1:4174). [Anteprima telefono](http://127.0.0.1:4174/__mobile).
+Open [127.0.0.1:4174](http://127.0.0.1:4174), or use the [phone preview](http://127.0.0.1:4174/__mobile).
 
-## Giocare
+The commands in this README use Windows PowerShell. On macOS or Linux, use `npm` and `npx` without the `.cmd` suffix and adjust the Android SDK and Java paths.
 
-1. Scegli e mescola categorie incluse e mazzi personali, oppure usa la categoria iniziale Animali.
-2. Configura una partita rapida (un turno) oppure 2–4 squadre. Ogni squadra gioca un turno per ciascun round.
-3. Tieni il telefono **in orizzontale sulla fronte**, schermo verso gli amici. Premi Calibra: hai 3 secondi per posizionarlo, poi resta fermo per circa un secondo. Avvia il countdown; la parola appare solo dopo il via.
-4. Gli amici seguono il tipo di indizio: descrivere senza dire la risposta; mimare senza parlare; cantare/fredonnare senza nominare l'artista o il titolo; imitare senza fare il nome. Per le scene bisogna indovinare l'intera situazione, non soltanto il personaggio.
-5. Inclina **in basso** per indovinata (+1), **in alto** per passare. Torna alla posizione verticale dopo ogni gesto. Sono sempre disponibili anche i pulsanti.
-6. Alla fine rivedete e correggete gli esiti, quindi confermate. Una parola senza risposta vale zero. Vince il punteggio più alto; tutti i primi a pari merito vincono.
+## How to play
 
-Nel browser: **↓ indovinata**, **↑ passa**, **spazio pausa/riprendi**. I tasti tenuti premuti non producono risposte ripetute. Gli input funzionano anche col pool di una sola parola.
+1. Select and mix built-in categories and custom decks, or start with the default Animals category.
+2. Choose quick play for a single turn, or a match with 2–4 teams. Each team takes one turn per round.
+3. Hold the phone **horizontally against your forehead**, with the screen facing your friends. Tap Calibrate: you have 3 seconds to position the phone, then hold still for about a second. Start the countdown; no word appears before the turn begins.
+4. Friends follow the category's clue style: describe without saying the answer, act without speaking, sing or hum without naming the artist or title, or impersonate without naming the person. For scenes, guess the whole situation rather than just the character.
+5. Tilt **down** for a correct answer (+1) or **up** to pass. Return to the upright neutral position after each gesture. Manual buttons are also available.
+6. Review and correct the outcomes before confirming the turn. An unanswered word scores zero. The highest score wins; tied teams share the victory.
 
-| Opzione           | Valori                                         |
-| ----------------- | ---------------------------------------------- |
-| Durata            | 30, 45, 60, 90, 120 secondi                    |
-| Squadre           | 2, 3, 4; nomi modificabili                     |
-| Round             | 1, 3, 5, 7 per squadra                         |
-| Risposta corretta | +1                                             |
-| Passaggio         | 0 predefinito, oppure −1                       |
-| Limite passaggi   | Illimitato predefinito, 0, 3, 5, 10            |
-| Feedback          | Suono e vibrazione separatamente disattivabili |
+In the browser: **↓ correct**, **↑ pass**, **Space pause/resume**. Holding a key does not submit repeated answers. Controls also work with a one-word pool.
 
-Il timer usa una scadenza temporale, non il conteggio degli intervalli. Il background e la perdita di focus web mettono in pausa e nascondono la parola; serve una ripresa esplicita con nuovo countdown. Il tempo si ferma durante la pausa; il breve feedback di un esito consuma tempo del turno. Le parole non si ripetono prima dell'esaurimento del pool; alla nuova mescolata si evita anche la ripetizione sul confine, se il pool contiene più di una voce.
+| Option | Values |
+| --- | --- |
+| Turn duration | 30, 45, 60, 90 or 120 seconds |
+| Teams | 2, 3 or 4, with editable names |
+| Rounds | 1, 3, 5 or 7 per team |
+| Correct answer | +1 |
+| Pass | 0 by default, optionally −1 |
+| Pass limit | Unlimited by default, or 0, 3, 5 or 10 |
+| Feedback | Sound and vibration can be disabled separately |
 
-## Categorie e lingue
+The timer uses an actual deadline rather than counting interval callbacks. Moving the app to the background or losing focus on the web pauses the turn and hides the word. Resuming requires an explicit action and a new countdown. Pauses stop the timer; brief answer feedback still counts toward turn time. Words do not repeat until the pool is exhausted. When reshuffling a pool with more than one entry, the first new word also differs from the previous cycle's last word.
 
-**12 categorie × 300 voci × 5 lingue = 18.000 versioni localizzate di 3.600 voci.** I conteggi nell'app vengono dai dati, non da etichette statiche.
+## Categories and languages
 
-| Categoria             | Indizio                      | Voci per lingua |
-| --------------------- | ---------------------------- | --------------: |
-| Animali               | Mimica                       |             300 |
-| Cibo                  | Descrizione                  |             300 |
-| Oggetti quotidiani    | Descrizione                  |             300 |
-| Luoghi                | Descrizione                  |             300 |
-| Natura e scienza      | Descrizione                  |             300 |
-| Sport in scena        | Mimica                       |             300 |
-| Musica e artisti      | Canto / imitazione strumento |             300 |
-| Azioni da mimare      | Mimica                       |             300 |
-| Mestieri e imprevisti | Imitazione                   |             300 |
-| Fiabe sottosopra      | Imitazione                   |             300 |
-| Emozioni in scena     | Imitazione                   |             300 |
-| Viaggi e disavventure | Indizi liberi                |             300 |
+**12 categories × 300 entries × 5 languages = 18,000 localized versions of 3,600 entries.** In-app counts come directly from the data.
 
-Italiano, inglese, spagnolo, tedesco e francese includono interfaccia, regole, metadati e voci. Prima lingua dal dispositivo, fallback inglese; il selettore con bandiere salva la preferenza. Un cambio lingua non traduce la partita in corso: la sua copia delle parole resta nella lingua di creazione.
+| Category | Clue style | Entries per language |
+| --- | --- | ---: |
+| Animals | Acting | 300 |
+| Food | Description | 300 |
+| Everyday objects | Description | 300 |
+| Places | Description | 300 |
+| Nature & science | Description | 300 |
+| Sports in action | Acting | 300 |
+| Music & artists | Singing / imitating instruments | 300 |
+| Act it out | Acting | 300 |
+| Jobs & mishaps | Impersonation | 300 |
+| Fairytales upside down | Impersonation | 300 |
+| Feelings on stage | Impersonation | 300 |
+| Travel adventures | Free clues | 300 |
 
-I pacchetti contengono sia parole sia espressioni e scene complete. Animali, cibo e altri repertori condividono parte del lessico originale del progetto dell'utente Open Taboo; sono state aggiunte specie, piatti, artisti e scene originali per Open GuessUp. I pacchetti di scene combinano protagonisti, azioni e vincoli: ad esempio «Un vampiro va dal dentista» è una situazione da recitare. Non sono presenti liste di parole vietate o dati estratti da GuessUp. La localizzazione è inclusa e controllata automaticamente per integrità e duplicati; resta consigliabile una revisione editoriale da madrelingua per terminologia specialistica e naturalezza di alcune scene.
+Italian, English, Spanish, German and French include the interface, rules, category metadata and entries. The initial language follows the device, with English as the fallback. The flag selector saves your preference. Changing language does not translate an ongoing game: its word snapshot stays in the language it was created in.
 
-`src/data/content.json` è autosufficiente e versionato; gli ID sono hash stabili della voce italiana nella sua categoria. Per correggere una traduzione, mantenere l'ID. Nessun dato viene scaricato durante il gioco.
+Decks include individual words, expressions and complete scenes. Animals, food and some other categories share original vocabulary with Gleetch's Open Taboo project, alongside additional species, dishes, artists and scenes created for Open GuessUp. Scene decks combine characters, actions and constraints: for example, “A vampire visits the dentist” is a whole situation to act out. There are no forbidden-word lists or databases extracted from GuessUp. Automated checks cover localization integrity and duplicates; native-speaker editorial review is still recommended for specialist vocabulary and the phrasing of some scenes.
 
-## Mazzi personali e salvataggi
+`src/data/content.json` is self-contained and versioned. IDs are stable hashes of the Italian entry within its category; preserve the ID when correcting a translation. No game content is downloaded during play.
 
-Creazione, modifica, colore e cancellazione dalla schermata Categorie. Una voce per riga; normalizzazione Unicode, spazi e doppioni senza distinguere maiuscole. Massimo 100 caratteri per voce e 3.000 voci per mazzo. Il nome è obbligatorio; un mazzo vuoto si può salvare ma non selezionare.
+## Custom decks and saved games
 
-Ogni mazzo appartiene alla lingua di creazione. La partita salva una **copia completa** delle parole, così rinominare o eliminare il mazzo non altera il gioco riprendibile. AsyncStorage usa `@open-guess/state-v1` e `@open-guess/language-v1`. Salvataggi assenti/corrotti vengono gestiti con valori sicuri; errori di scrittura vengono segnalati senza interrompere il gioco. Durante il turno si salva anche un checkpoint ogni due secondi; una chiusura forzata può perdere fino a due secondi di progresso.
+Create, edit, recolor and delete decks from Categories. Enter one word or expression per line. Inputs receive Unicode and whitespace normalization and case-insensitive deduplication. Each entry allows up to 100 characters; each deck allows up to 3,000 entries. A name is required. Empty decks can be saved but cannot be selected for play.
 
-## Sensori e orientamento Android
+Each deck belongs to the language in which it was created. Saved games retain a **complete snapshot** of their words, so renaming or deleting a deck does not affect a resumable game. AsyncStorage uses `@open-guess/state-v1` and `@open-guess/language-v1`. Missing or corrupt saves fall back to safe defaults; write errors are reported without interrupting play. Active turns save a checkpoint every two seconds, so force-closing the app may lose up to two seconds of progress.
 
-`expo-sensors` legge l'accelerometro a 20 Hz. L'inclinazione viene calcolata con `atan2(z, hypot(x,y))`, indipendente dalla scelta landscape sinistra/destra. La calibrazione lascia prima 3 secondi per portare il telefono sulla fronte, poi misura circa un secondo da fermo e accetta una posizione neutra stabile entro ±35°. Dopo la calibrazione puoi provare l'inclinazione nella preparazione, senza assegnare punti.
+## Android sensors and orientation
 
-Il filtro usa il tempo trascorso (costante 90 ms), soglia di attivazione ±26°, rientro entro ±12° stabile per 160 ms e inclinazione confermata per 80 ms. Una sola risposta per gesto, senza punteggi durante preparazione, countdown, pausa o feedback. La posizione neutra può essere rilevata durante il countdown per riconoscere anche il primo gesto. I comandi manuali disattivano realmente la subscription.
+`expo-sensors` reads the accelerometer at 20 Hz. Tilt is calculated using `atan2(z, hypot(x,y))`, independent of left or right landscape orientation. Calibration gives you 3 seconds to place the phone against your forehead, then measures about one second of stillness. It accepts a stable neutral position within ±35°. After calibration, you can try the gestures before the turn without scoring points.
 
-La disponibilità richiede campioni reali: in assenza di dati per 2,5 secondi il turno con sensore viene messo in pausa. Quando i campioni tornano la disponibilità si ripristina, ma serve una nuova calibrazione. Sono disponibili ricalibrazione, nuovo tentativo e passaggio ai pulsanti. Le subscription e i timer vengono rimossi all'uscita; il ritorno dal background riconnette il sensore e richiede una ripresa esplicita. Il browser presenta soltanto pulsanti e tastiera.
+The filter uses elapsed time with a 90 ms time constant, a ±26° activation threshold, return within ±12° held for 160 ms, and a confirmed tilt held for 80 ms. Each gesture submits one answer. No answers are accepted during preparation, countdown, pause or feedback. The neutral position can be detected during countdown so the first gesture is recognized. Choosing manual controls removes the sensor subscription.
 
-`expo-screen-orientation` blocca realmente in landscape preparazione e turno, e ripristina portrait nei menu/riepiloghi. Keep-awake mantiene attivo lo schermo durante countdown e turno.
+Availability requires real samples. If no data arrives for 2.5 seconds, a sensor-controlled turn pauses. When samples return, availability recovers, but recalibration is required. You can recalibrate, retry or switch to buttons. Subscriptions and timers are cleaned up on exit. Returning from the background reconnects the sensor and requires explicit resumption. The browser provides buttons and keyboard controls only.
 
-**I test usano stream simulati e non sostituiscono una prova su telefono fisico.** La registrazione è stata rimossa: non vengono richiesti fotocamera, microfono o accesso alla galleria.
+`expo-screen-orientation` locks preparation and gameplay to landscape and restores portrait for menus and summaries. Keep-awake keeps the display on during countdown and active play.
 
-Riferimenti tecnici: [coordinate dei sensori Android](https://developer.android.com/develop/sensors-and-location/sensors/sensors_overview#sensors-coords) e [API Accelerometer di Expo](https://docs.expo.dev/versions/latest/sdk/accelerometer/). Il segno delle misure è verificato anche nel modulo nativo della versione Expo installata.
+**Sensor tests use simulated streams and do not replace testing on a physical phone.** Recording has been removed; camera, microphone and gallery permissions are not requested.
 
-## APK Android
+Technical references: [Android sensor coordinates](https://developer.android.com/develop/sensors-and-location/sensors/sensors_overview#sensors-coords) and the [Expo Accelerometer API](https://docs.expo.dev/versions/latest/sdk/accelerometer/). The measurement sign has also been checked against the native module in the installed Expo version.
 
-L’APK ARM64 della [release v1.1.0](https://github.com/PaoloConteDev/OpenGuessUp/releases/tag/v1.1.0) pesa circa 30 MB. Il file locale è `artifacts/OpenGuessUp-1.1.0-arm64.apk`; i sorgenti completi sono nell’allegato `OpenGuessUp-1.1.0-source.zip`. Firma e metadati sono controllati, ma non è stato installato su un dispositivo fisico durante questa sessione.
+## Android APK
 
-Identità autonoma: **Open GuessUp**, slug `open-guess`, schema `openguess`, package `it.gleetch.openguess`, versione 1.1.0. Nessun ID EAS, proprietario o segreto di Open Taboo. Android minimo API 24. Icone e suoni propri inclusi.
+The ARM64 APK in [release v1.1.0](https://github.com/PaoloConteDev/OpenGuessUp/releases/tag/v1.1.0) is about 30 MB. The local build is `artifacts/OpenGuessUp-1.1.0-arm64.apk`; the complete source archive is attached as `OpenGuessUp-1.1.0-source.zip`. Its signature and metadata have been verified, but this build has not been installed on a physical device during development verification.
 
-La versione pubblica **1.1.0** corrisponde al `versionCode` Android **18**. La versione mostrata in home e impostazioni proviene da `app.json`, attraverso `src/version.ts`. Il `versionCode` cresce separatamente per consentire gli aggiornamenti Android.
+App identity: **Open GuessUp**, slug `open-guess`, scheme `openguess`, package `it.gleetch.openguess`, version 1.1.0. No EAS project ID, owner or secrets from Open Taboo are reused. Minimum Android API: 24. Original icons and sounds are bundled.
 
-La [repository GitHub](https://github.com/PaoloConteDev/OpenGuessUp) è raggiungibile anche dalle impostazioni dell'app. Sorgenti, dati, font e suoni sono inclusi nel progetto; APK e archivi di consegna vengono distribuiti negli allegati della release.
+Public version **1.1.0** corresponds to Android `versionCode` **18**. The home and settings version labels read `app.json` through `src/version.ts`. The internal `versionCode` increases separately to support Android updates.
 
-Build cloud, richiede un account Expo e l'associazione a un **nuovo** progetto:
+The [GitHub repository](https://github.com/PaoloConteDev/OpenGuessUp) is also linked from the app settings. Source code, content, fonts and sounds are included in the project; APKs and delivery archives are published as release attachments.
+
+### Cloud build
+
+Requires an Expo account and association with a **new** project:
 
 ```powershell
 npx.cmd eas-cli login
@@ -138,9 +142,11 @@ npx.cmd eas-cli build:configure
 npx.cmd eas-cli build --platform android --profile preview
 ```
 
-`eas.json` configura un vero APK per il profilo `preview`; `production` produce un AAB. Non riutilizzare le credenziali di pubblicazione di altri progetti.
+The `preview` profile in `eas.json` produces an APK; `production` produces an AAB. Do not reuse another project's publishing credentials.
 
-Build locale con Android SDK/NDK, CMake e Java 21 installati:
+### Local build
+
+Requires the Android SDK/NDK, CMake and Java 21:
 
 ```powershell
 npx.cmd expo prebuild --platform android --no-install
@@ -150,13 +156,13 @@ cd android
 .\gradlew.bat assembleRelease -PreactNativeArchitectures=arm64-v8a --no-daemon --max-workers=2
 ```
 
-Output: `android/app/build/outputs/apk/release/app-release.apk`. La build locale generata da Expo usa la chiave debug del template: adatta ai test e al sideload, da sostituire con una chiave di rilascio propria prima della distribuzione pubblica. Non è stata letta né copiata alcuna chiave di Open Taboo. Il profilo EAS può gestire una chiave nuova.
+Output: `android/app/build/outputs/apk/release/app-release.apk`. The locally generated Expo project uses the template's debug key, suitable for testing and sideloading. Replace it with a dedicated release key before production distribution. No Open Taboo signing key was read or copied. EAS can manage a new signing key.
 
-Su Windows usare una cartella breve (es. `C:\og-build`) se Ninja segnala nomi oltre 260 caratteri. Il config plugin `scripts/withShortPaths.cjs` limita anche i percorsi oggetto CMake; da solo può non bastare quando la checkout è molto profonda. La build ARM64 è adatta ai telefoni ARM64; per altre architetture omettere la proprietà `reactNativeArchitectures`.
+On Windows, use a short checkout path such as `C:\og-build` if Ninja reports paths longer than 260 characters. The `scripts/withShortPaths.cjs` config plugin also shortens CMake object paths, but a deeply nested checkout may still require relocation. This ARM64 build targets ARM64 phones; omit `reactNativeArchitectures` to build for other architectures.
 
-**`npm run export:android` genera bundle JavaScript/Hermes e asset, non un APK.** L'APK installato è autonomo e funziona offline dal primo avvio. Expo Go in sviluppo richiede Metro. La versione web non include un service worker per l'avvio offline a freddo.
+**`npm run export:android` creates JavaScript/Hermes bundles and assets, not an APK.** The installed APK is standalone and works offline from the first launch. Expo Go requires Metro during development. The web version does not include a service worker for offline cold starts.
 
-## Verifiche
+## Verification
 
 ```powershell
 npm.cmd run typecheck
@@ -164,27 +170,29 @@ npm.cmd test
 npm.cmd run export:web
 npm.cmd run export:android
 npm.cmd run preview
-# In un secondo terminale; richiede Edge nel percorso standard Windows
+# In a second terminal; requires Edge at the standard Windows path
 node scripts/smoke.mjs
 ```
 
-I test del motore verificano punteggi, penalità, turni uguali per 2–4 squadre e 1/3/5/7 round, pareggio, scadenza, pausa/ripresa, mescolamento e pool minimi, input simultanei, correzioni, ripristino, mazzi e dati localizzati. La prova browser percorre anche salvataggio/ricaricamento, cinque lingue, creazione multipla, tastiera e scadenza reale del timer. Screenshot in `docs/`; risultati e limiti in `docs/VALIDATION.md`.
+Engine tests cover scoring, penalties, equal turns for 2–4 teams and 1/3/5/7 rounds, ties, expiry, pause/resume, shuffling and minimal pools, simultaneous inputs, outcome corrections, recovery, decks and localized data. Browser checks also cover save/reload, all five languages, bulk entry, keyboard controls and actual timer expiry. Screenshots are in `docs/`; results and limitations are documented in `docs/VALIDATION.md`.
 
-La galleria del README è in `docs/screenshots/`: due immagini portrait da 780 × 1688 px. La home è una cattura diretta dell’anteprima web; il gioco è una cattura reale del turno landscape inserita in una presentazione verticale con didascalia. Per rigenerarle con l’anteprima già avviata: `node scripts/screenshots.mjs`. Le catture landscape in `docs/` restano disponibili per la verifica del turno.
+The README gallery is in `docs/screenshots/`: two portrait images at 780 × 1688 px. The home is captured directly from the web preview. The gameplay image contains a real landscape turn inside a vertical presentation with a caption. With the preview server running, regenerate them using `node scripts/screenshots.mjs`. Landscape captures in `docs/` remain available for gameplay verification.
 
-## Struttura
+## Project structure
 
-- `App.tsx`: navigazione, ciclo di vita, scadenza e persistenza.
-- `src/version.ts`: versione pubblica letta dalla configurazione Expo.
-- `src/game/engine.ts`: motore puro, nessuna dipendenza UI, storage o sensore.
-- `src/game/tilt.ts`: filtro e isteresi puri.
-- `src/hooks/useTilt.ts`: acquisizione Expo e calibrazione.
-- `src/game/tiltSession.ts`: ciclo di vita del sensore, calibrazione e recupero del segnale.
-- `src/screens/`: menu, editor, impostazioni e partita.
-- `src/data/`: contenuti locali e validazione mazzi.
-- `src/i18n/`: tutte le stringhe locali.
-- `scripts/assets.mjs`: rigenera icona e suoni sintetizzati originali.
+- `App.tsx`: navigation, lifecycle, deadlines and persistence.
+- `src/version.ts`: public version from the Expo configuration.
+- `src/game/engine.ts`: pure game engine without UI, storage or sensor dependencies.
+- `src/game/tilt.ts`: pure filtering and hysteresis.
+- `src/hooks/useTilt.ts`: Expo sensor acquisition and calibration.
+- `src/game/tiltSession.ts`: sensor lifecycle, calibration and sample recovery.
+- `src/screens/`: menus, deck editor, settings and gameplay.
+- `src/data/`: local content and custom-deck validation.
+- `src/i18n/`: localized strings.
+- `scripts/assets.mjs`: regenerates the icon and original synthesized sounds.
 
-Font Outfit e icone Lucide conservano le rispettive licenze; vedere `THIRD_PARTY_NOTICES.md`. Open GuessUp non è affiliato a Cosmicode o GuessUp. Riferimenti di meccanica consultati: [sito ufficiale](https://cosmicode.games/en/guess-up) e [scheda Google Play](https://play.google.com/store/apps/details?id=pt.cosmicode.guessup&hl=it). Nessuna immagine, logo, traccia audio o banca dati di GuessUp è inclusa.
+## Credits and license
 
-Codice distribuito con [licenza MIT](LICENSE). [Asset e prompt dell’illustrazione](docs/HERO_ART.md).
+Outfit and Lucide retain their respective licenses; see `THIRD_PARTY_NOTICES.md`. Open GuessUp is not affiliated with Cosmicode or GuessUp. Gameplay references: the [official website](https://cosmicode.games/en/guess-up) and [Google Play listing](https://play.google.com/store/apps/details?id=pt.cosmicode.guessup&hl=it). No GuessUp images, logos, audio tracks or databases are included.
+
+Code is distributed under the [MIT license](LICENSE). [Artwork asset and generation prompt](docs/HERO_ART.md).
