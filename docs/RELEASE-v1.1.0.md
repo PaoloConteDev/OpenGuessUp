@@ -20,6 +20,17 @@ Scarica **`OpenGuessUp-1.1.0-arm64.apk`** su un telefono ARM64 con Android 7/API
 
 Gli allegati comprendono anche `OpenGuessUp-1.1.0-source.zip` e `SHA256SUMS.txt`. La release 1.0.0 resta disponibile nello storico.
 
+## Screenshot
+
+<p>
+  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/main/docs/screenshots/home-portrait-it.png" width="200" alt="Home portrait" />
+  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/main/docs/screenshots/categories-portrait-it.png" width="200" alt="Categorie portrait" />
+  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/main/docs/screenshots/setup-portrait-it.png" width="200" alt="Configurazione portrait" />
+  <img src="https://raw.githubusercontent.com/PaoloConteDev/OpenGuessUp/main/docs/screenshots/results-portrait-it.png" width="200" alt="Risultati portrait" />
+</p>
+
+Home, categorie, configurazione e risultati in formato verticale. Durante il turno il telefono si usa in orizzontale.
+
 ## Verifiche e limiti
 
 Typecheck, 60 test automatici ed export web superati. APK nativo ARM64 compilato, metadati e firma controllati; controlli browser della versione nelle cinque lingue, in home e nelle impostazioni. Il sensore è coperto da test con campioni simulati: sensori, orientamento e feedback tattile richiedono ancora un collaudo su telefono fisico. Dettagli in `docs/VALIDATION.md`.

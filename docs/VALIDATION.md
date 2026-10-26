@@ -41,6 +41,8 @@ Il web richiede rete/server per l'avvio a freddo: non c'è un service worker. L'
 
 ## Screenshot
 
+La galleria pubblica del README usa esclusivamente screenshot portrait, catturati dalla UI web reale con viewport 390 × 844 e densità 2 (PNG 780 × 1688). `node scripts/screenshots.mjs` acquisisce home, categorie, configurazione e risultati in `docs/screenshots/`, verificando errori JavaScript e overflow. Il turno resta landscape; le catture tecniche sottostanti documentano l’orientamento effettivo del gioco.
+
 | Schermata                         | File                                                    |
 | --------------------------------- | ------------------------------------------------------- |
 | Home telefono                     | `home-mobile-it.png`                                    |
