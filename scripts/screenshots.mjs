@@ -56,13 +56,28 @@ try {
     .getByRole("button", { name: "New game", exact: true })
     .first()
     .waitFor();
-  await page.screenshot({ path: "docs/screenshots/home-portrait-en.png" });
+  if (!process.argv.includes("--game-only")) {
+    await page.screenshot({ path: "docs/screenshots/home-portrait-en.png" });
+  }
   assert.deepEqual(errors, []);
 
   if (process.argv.includes("--home-only")) {
     console.log("Home captured at full opacity after the entrance animation.");
   } else {
-    await button("New game").click();
+    await button("Categories").click();
+    await button("Create a deck").click();
+    await page
+      .getByRole("textbox", { name: "Deck name", exact: true })
+      .fill("Party favorites");
+    await page
+      .getByRole("textbox", { name: "Words and phrases", exact: true })
+      .fill("GUITAR\nPOPCORN\nPENGUIN\nASTRONAUT\nBASKETBALL");
+    await button("Save deck").click();
+    await page.getByRole("checkbox", { name: "Animals", exact: true }).click();
+    await page
+      .getByRole("checkbox", { name: "Party favorites", exact: true })
+      .click();
+    await button("Play with these decks").click();
     await button("Let's go!").click();
     await page.setViewportSize({ width: 844, height: 390 });
     await button("Let's go! · 60s").click();
@@ -71,7 +86,7 @@ try {
       await page.keyboard.press(key);
       await page.waitForTimeout(720);
     }
-    await page.getByText("Animals", { exact: false }).first().waitFor();
+    await page.getByText("Party favorites", { exact: false }).first().waitFor();
     await page.getByRole("button", { name: /^↑ Skip/ }).waitFor();
     await page.getByRole("button", { name: /^↓ Got it!/ }).waitFor();
     assert.ok(
@@ -109,7 +124,7 @@ try {
   </style></head><body>
     <div class="brand"><img alt="" src="${data(icon, "image/png")}"><div><strong>Open GuessUp</strong><small>by Gleetch</small></div></div>
     <div class="eyebrow">YOUR TURN, AS FRIENDS SEE IT</div>
-    <h1>How many can<br>you guess?</h1>
+    <h1>One word.<br>Make it count.</h1>
     <div class="phone"><img alt="Actual gameplay screen" src="${data(game, "image/png")}"></div>
     <div class="caption">Gameplay in landscape</div>
     <div class="controls"><div class="control green"><b>↓ +1</b>Got it!</div><div class="control red"><b>↑</b>Skip</div></div>
@@ -130,7 +145,9 @@ try {
       path: "docs/screenshots/game-portrait-en.png",
     });
     console.log(
-      "English home + real landscape game presented in portrait: two 860×1864 images.",
+      process.argv.includes("--game-only")
+        ? "English gameplay preview refreshed; home image unchanged."
+        : "English home + real landscape game presented in portrait: two 860×1864 images.",
     );
   }
 } finally {
